@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
-    <div className="flex h-[150px] w-[100%] pl-[94px] pr-[94px] justify-between items-center">
-      <div className="logo-text text-5 pointer-events-none select-none">
+    <div className="flex h-[150px] flex-shrink-0 w-[100%] pd-default justify-between items-center">
+      <div className="logo-text text-c5 pointer-events-none select-none">
         BreakThrough
       </div>
       <div className="flex justify-end gap-[57px] items-center">

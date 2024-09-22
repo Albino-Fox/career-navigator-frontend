@@ -7,8 +7,10 @@ interface HomeLayoutProps {
 const HomeLayout = ({ children }: HomeLayoutProps) => {
   return (
     <>
-      <Navbar></Navbar>
-      {children}
+      <div className="flex h-[100vh] flex-col">
+        <Navbar></Navbar>
+        {children}
+      </div>
     </>
   );
 };
