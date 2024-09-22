@@ -24,7 +24,7 @@ const Form = ({
       method="post"
       className={`flex flex-col ${className}`}
     >
-      <div className="big-text self-center">{title}</div>
+      <div className="big-text self-center pb-[50px]">{title}</div>
       {children}
       <div className="xsmall-text mt-[-20px]">
         {hasImportantFields ? "*отмечены обязательные поля" : ""}
@@ -32,7 +32,7 @@ const Form = ({
       <Button
         size="autofill"
         variant="outline"
-        className="mt-[50px] self-center"
+        className="mt-[45px] self-center"
       >
         {action}
       </Button>

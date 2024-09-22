@@ -8,13 +8,19 @@ const Login = () => {
         title="Регистрация"
         btnTitle="Зарегистрироваться"
         hasImportantFields
-        className="pb-[200px]"
+        className="pb-[100px] pt-[50px]"
       >
-        <InputField title="Почта" isImportant></InputField>
-        <InputField title="Пароль" isImportant></InputField>
+        <InputField type="email" title="Почта" isImportant></InputField>
+        <InputField type="password" title="Пароль" isImportant></InputField>
+        <InputField
+          type="password"
+          title="Повторите пароль"
+          isImportant
+        ></InputField>
         <InputField title="Имя" isImportant></InputField>
         <InputField title="Фамилия"></InputField>
         <InputField title="Отчество"></InputField>
+        {/* TODO: Maybe add phone validation*/}
         <InputField title="Номер телефона" isImportant></InputField>
       </Form>
     </div>

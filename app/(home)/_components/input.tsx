@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 interface InputFieldProps {
   title: string;
   isImportant?: boolean;
+  pattern?: string;
   type?: string;
   className?: string;
 }
@@ -21,7 +22,7 @@ const InputField = ({
         {title}
         {`${isImportant ? "*" : ""}`}
       </div>
-      <Input type={type} className="h-[60px] bg-2" />
+      <Input type={type} className="h-[60px] bg-c2/25 small-text" />
     </div>
   );
 };
