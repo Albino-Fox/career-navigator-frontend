@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="logo-text text-c5 pointer-events-none select-none">
         BreakThrough
       </div>
-      <div className="flex justify-end gap-[57px] items-center">
+      <div className="flex justify-end gap-[57px] items-center flex-shrink-0">
         <Button size="fix">Главная</Button>
         <Button size="fix">О нас</Button>
         <Button size="fix">Связаться</Button>
