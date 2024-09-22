@@ -19,7 +19,7 @@ const ContactPage = () => {
       >
         <div className="pb-[30px]">
           <div className="small-text">Причина обращения</div>
-          <Select>
+          <Select defaultValue="technical">
             <SelectTrigger className="h-[60px] bg-c2/25 small-text m-0">
               <SelectValue />
             </SelectTrigger>
