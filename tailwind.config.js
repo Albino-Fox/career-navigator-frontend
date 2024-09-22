@@ -21,7 +21,7 @@ module.exports = {
         2: "#B7C8B5",
         3: "#A790A5",
         4: "#875C74",
-        5: "#875C74",
+        5: "#54414E",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
