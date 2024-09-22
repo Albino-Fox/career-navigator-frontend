@@ -9,7 +9,7 @@ const LoginPage = () => {
         <InputField type="email" title="Почта"></InputField>
         <InputField type="password" title="Пароль"></InputField>
       </Form>
-      <div className="text-center small-text">
+      <div className="text-center small-text pb-[100px]">
         Нет аккаунта?{" "}
         <Button variant="link" size="text" className="small-text">
           Зарегистрироваться

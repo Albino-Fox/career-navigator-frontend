@@ -1,13 +1,47 @@
 import Form from "../_components/form";
-import InputField from "../_components/input";
 import TextareaField from "../_components/textarea";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const ContactPage = () => {
   return (
-    <Form title="Составление обращения" btnTitle="Отправить">
-      <InputField title="Причина обращения" />
-      <TextareaField title="Сообщение" placeholder="Введите текст сообщения" />
-    </Form>
+    <div className="flex justify-center w-[100%]">
+      <Form
+        title="Составление обращения"
+        btnTitle="Отправить"
+        className="w-[856px] pb-[100px] pt-[50px]"
+      >
+        <div className="pb-[30px]">
+          <div className="small-text">Причина обращения</div>
+          <Select>
+            <SelectTrigger className="h-[60px] bg-c2/25 small-text m-0">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="technical">Технические проблемы</SelectItem>
+              <SelectItem value="university">
+                Зарегистрировать университет
+              </SelectItem>
+              <SelectItem value="employer">
+                Зарегистрировать работодателя
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <TextareaField
+          title="Сообщение"
+          placeholder="Введите текст сообщения"
+          className="min-h-[250px]"
+        />
+      </Form>
+    </div>
   );
 };
 
