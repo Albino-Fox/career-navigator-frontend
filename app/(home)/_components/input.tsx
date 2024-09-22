@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 interface InputFieldProps {
   title: string;
   isImportant?: boolean;
-  pattern?: string;
   type?: string;
   className?: string;
 }
