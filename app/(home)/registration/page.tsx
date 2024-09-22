@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Form from "../_components/form";
 import InputField from "../_components/input";
 
-const Login = () => {
+const RegistrationPage = () => {
   return (
     <div className="w-[564px] self-center">
       <Form
@@ -34,4 +34,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default RegistrationPage;

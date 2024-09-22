@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Form from "../_components/form";
 import InputField from "../_components/input";
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <div className="w-[564px] self-center">
       <Form title="Вход" btnTitle="Войти" className="pb-[25px] pt-[50px]">
@@ -19,4 +19,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
