@@ -29,11 +29,7 @@ const Form = ({
       <div className="xsmall-text mt-[-20px]">
         {hasImportantFields ? "*отмечены обязательные поля" : ""}
       </div>
-      <Button
-        size="autofill"
-        variant="outline"
-        className="mt-[45px] self-center"
-      >
+      <Button variant="outline" className="mt-[45px] self-center">
         {action}
       </Button>
     </form>

@@ -9,11 +9,15 @@ const Navbar = () => {
         BreakThrough
       </div>
       <div className="flex justify-end gap-[57px] items-center">
-        <Button>Главная</Button>
-        <Button>О нас</Button>
-        <Button>Связаться</Button>
-        <Button>Обучение</Button>
-        <Button variant="icon" className="w-[90px] h-[90px]"></Button>
+        <Button size="fix">Главная</Button>
+        <Button size="fix">О нас</Button>
+        <Button size="fix">Связаться</Button>
+        <Button size="fix">Обучение</Button>
+        <Button
+          size="fix"
+          variant="icon"
+          className="w-[90px] h-[90px]"
+        ></Button>
       </div>
     </div>
   );

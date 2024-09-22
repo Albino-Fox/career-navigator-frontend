@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Form from "../_components/form";
 import InputField from "../_components/input";
 
@@ -8,7 +9,7 @@ const Login = () => {
         title="Регистрация"
         btnTitle="Зарегистрироваться"
         hasImportantFields
-        className="pb-[100px] pt-[50px]"
+        className="pb-[25px] pt-[50px]"
       >
         <InputField type="email" title="Почта" isImportant></InputField>
         <InputField type="password" title="Пароль" isImportant></InputField>
@@ -23,6 +24,12 @@ const Login = () => {
         {/* TODO: Maybe add phone validation*/}
         <InputField title="Номер телефона" isImportant></InputField>
       </Form>
+      <div className="text-center small-text pb-[100px]">
+        Есть аккаунт?{" "}
+        <Button variant="link" size="text" className="small-text">
+          Войти
+        </Button>
+      </div>
     </div>
   );
 };
