@@ -1,11 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const HomePage = () => {
   return (
     <div>
-      <div className="absolute z-[-1] bg-c2 w-[50%] h-[110vh] h-max-[100%] overflow-y-hidden top-0 bot-0 rounded-tr-[475px]"></div>
+      <div className="absolute z-[-1] bg-c2 w-[50%] h-[110vh] max-h-[110%] overflow-y-hidden top-0 bot-0 rounded-tr-[475px]"></div>
       <div className="flex pd-default items-center justify-between">
         <div className="flex flex-col w-[720px]">
           <div className="font-light big-text pb-[62px]">
@@ -19,7 +20,7 @@ const HomePage = () => {
           </Button>
         </div>
         <div className="mr-[-60px]">
-          <img src="/main.svg" alt="image.svg" />
+          <Image src="/main.svg" width={900} height={900} alt="image.svg" />
         </div>
       </div>
     </div>

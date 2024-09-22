@@ -24,6 +24,7 @@ const buttonVariants = cva(
         default: "h-[60px] w-[142px]",
         bigfill: "h-[74px] w-[100%]",
         fill: "h-[60px] w-[100%]",
+        autofill: "h-[60px] px-[50px]",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
