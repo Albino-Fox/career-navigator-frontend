@@ -8,3 +8,8 @@ export type Skill = {
   difficulty: number;
   title: SkillName;
 };
+
+export type Task = {
+  title: string;
+  description: string;
+};
