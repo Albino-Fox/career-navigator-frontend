@@ -9,16 +9,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-interface UniversityCardProps {
+interface CardUniversityProps {
   title: string;
   description?: string;
   skills: Skill[];
 }
-const UniversityCard = ({
+const CardUniversity = ({
   title,
   description,
   skills,
-}: UniversityCardProps) => {
+}: CardUniversityProps) => {
   return (
     <div className="bg-c1 p-[25px] mb-[25px] rounded-[10px] text-black leading-none">
       <div className="big-text -mt-2">{title}</div>
@@ -49,4 +49,4 @@ const UniversityCard = ({
   );
 };
 
-export default UniversityCard;
+export default CardUniversity;

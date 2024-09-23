@@ -16,7 +16,7 @@ const buttonVariants = cva(
         bigdefaultdark:
           "bg-c1 hover:bg-c2 rounded-[30px] text-black big-btn-text ",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-c6 hover:bg-c6/75 rounded-[30px] text-white small-btn-text",
         outline:
           "border border-input bg-transparent border-[3px] border-c5 text-black hover:text-c3 hover:border-c3 rounded-[30px] big-btn-text",
         secondary:
