@@ -25,9 +25,7 @@ const ContactPage = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="technical">Технические проблемы</SelectItem>
-              <SelectItem value="university">
-                Зарегистрировать университет
-              </SelectItem>
+              <SelectItem value="university">Зарегистрировать ВУЗ</SelectItem>
               <SelectItem value="employer">
                 Зарегистрировать работодателя
               </SelectItem>
