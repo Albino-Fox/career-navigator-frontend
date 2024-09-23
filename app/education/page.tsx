@@ -14,7 +14,7 @@ import ListCardWork from "./_components/listCardWork";
 
 const EducationPage = () => {
   return (
-    <div className="flex justify-center w-[100%] pb-[75px]">
+    <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
       <div className="flex flex-col gap-[10px] items-center w-[836px]">
         <div className="big-text py-5">Обучение</div>
         <div className="w-[100%]">
