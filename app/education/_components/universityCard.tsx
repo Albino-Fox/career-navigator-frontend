@@ -8,7 +8,7 @@ interface UniversityCardProps {
 }
 const UniversityCard = ({ title, skills }: UniversityCardProps) => {
   return (
-    <div className="bg-c1 p-[25px] rounded-[10px] text-black leading-none">
+    <div className="bg-c1 p-[25px] mb-[25px] rounded-[10px] text-black leading-none">
       <div className="big-text -mt-2">{title}</div>
       <div className="py-5 flex flex-wrap justify-between">
         {skills.map((skill, idx) => (
