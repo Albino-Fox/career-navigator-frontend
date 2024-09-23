@@ -10,11 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-c5 hover:bg-c3 rounded-[30px] text-white small-btn-text",
-        bigdefault: "bg-c5 hover:bg-c3 rounded-[30px] text-white big-btn-text",
+        bigdefault: "bg-c5 hover:bg-c3 rounded-[30px] text-white big-btn-text ",
         defaultdark:
           "bg-c1 hover:bg-c2 rounded-[30px] text-black small-btn-text",
         bigdefaultdark:
-          "bg-c1 hover:bg-c2 rounded-[30px] text-black big-btn-text",
+          "bg-c1 hover:bg-c2 rounded-[30px] text-black big-btn-text ",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:

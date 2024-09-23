@@ -7,7 +7,7 @@ interface EducationLayoutProps {
 const EducationLayout = ({ children }: EducationLayoutProps) => {
   return (
     <>
-      <div className="flex h-[100vh] flex-col bg-c5">
+      <div className="flex h-[100vh] flex-col bg-c5 text-white">
         <NavbarDark></NavbarDark>
         {children}
       </div>
