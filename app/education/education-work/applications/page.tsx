@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import CardApplication from "../_components/cardApplication";
-import ListCardWork from "../_components/listCardWork";
+import CardApplication from "../../_components/cardApplication";
+import ListCardWork from "../../_components/listCardWork";
 
 const ApplicationsPage = () => {
   return (
