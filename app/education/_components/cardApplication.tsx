@@ -15,12 +15,12 @@ const CardApplication = ({
   children,
 }: CardApplicationProps) => {
   return (
-    <div className="bg-c1 p-[25px] mb-[15px] rounded-[10px] text-black leading-none">
-      <div className="big-text">
+    <div className="bg-c1 p-[25px] mb-[15px] rounded-[10px] text-black leading-none -mt-[30px]">
+      <div className="big-text pb-[50px]">
         Студент &quot;{name}&quot; хочет взяться за эту задачу:{" "}
       </div>
       <div>Почта: {email}</div>
-      <div>Телефон: {phone}</div>
+      <div className="pb-[40px]">Телефон: {phone}</div>
       <div className="pb-5 pt-2 justify-between">
         <div>Подходящие навыки:</div>
         <div className="normal-text flex flex-col leading-snug">
@@ -31,7 +31,7 @@ const CardApplication = ({
           ))}
         </div>
       </div>
-      <div className="flex flex-row justify-between items-center">
+      <div className="flex flex-row justify-between items-center pt-5">
         {children}
       </div>
     </div>
