@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import Form from "../_components/form";
-import InputField from "../_components/input";
+import Form from "../../../components/form";
+import InputField from "../../../components/input";
 
 const RegistrationPage = () => {
   return (

@@ -1,5 +1,5 @@
-import Form from "../_components/form";
-import TextareaField from "../_components/textarea";
+import Form from "../../../components/form";
+import TextareaField from "../../../components/textarea";
 
 import {
   Select,

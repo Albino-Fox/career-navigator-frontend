@@ -1,6 +1,15 @@
 import { Button } from "@/components/ui/button";
 import ListCardWork from "../_components/listCardWork";
-import { Edit } from "lucide-react";
+import { Plus } from "lucide-react";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const EducationWorkPage = () => {
   return (
@@ -10,9 +19,21 @@ const EducationWorkPage = () => {
         <div className="flex flex-col w-[100%]">
           <div className="flex w-[100%] flex-row justify-between">
             <div>Мои рабочие задачи</div>
-            <Button className="p-0 hover:bg-c5">
-              <Edit size={35} className="hover:text-c1"></Edit>
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="p-0 hover:bg-c5">
+                  <Plus size={40} className="hover:text-c1"></Plus>
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="block bg-c5 border-c1 border-[2px] min-w-[1148px] h-[95vh] pt-0 overflow-auto">
+                <DialogHeader className="flex flex-col justify-start">
+                  <DialogTitle className="text-white text-center big-text font-normal py-[40px] ">
+                    Добавить рабочую задачу
+                  </DialogTitle>
+                  <DialogDescription>a</DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </div>
           <div className="flex w-[100%] flex-col justify-center border-c1 border-[2px] rounded-[10px]  p-[10px]">
             <ListCardWork
