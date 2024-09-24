@@ -21,7 +21,7 @@ const ListCardWork = ({
   children,
 }: ListCardWorkProps) => {
   return (
-    <div className="bg-c1 p-[25px] mb-[25px] rounded-[10px] text-black leading-none">
+    <div className="bg-c1 p-[25px] mb-[15px] rounded-[10px] text-black leading-none">
       <div className="big-text -mt-2">{title}</div>
       <div className="pb-5 pt-2 flex flex-wrap justify-between">
         <div className="normal-text leading-snug">
