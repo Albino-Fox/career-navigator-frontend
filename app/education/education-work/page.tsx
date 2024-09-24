@@ -10,6 +10,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import InputDarkField from "@/components/inputDark";
+import TextareaDarkField from "@/components/textareaDark";
+import ModalEdit from "../_components/modalEdit";
 
 const EducationWorkPage = () => {
   return (
@@ -26,11 +36,57 @@ const EducationWorkPage = () => {
                 </Button>
               </DialogTrigger>
               <DialogContent className="block bg-c5 border-c1 border-[2px] min-w-[1148px] h-[95vh] pt-0 overflow-auto">
-                <DialogHeader className="flex flex-col justify-start">
-                  <DialogTitle className="text-white text-center big-text font-normal py-[40px] ">
+                <DialogHeader className="flex flex-col justify-start px-[61px]">
+                  <DialogTitle className="text-white text-center big-text font-normal py-[40px]">
                     Добавить рабочую задачу
                   </DialogTitle>
-                  <DialogDescription>a</DialogDescription>
+                  <DialogDescription className="flex flex-col">
+                    <InputDarkField title="Название"></InputDarkField>
+                    <div className="pb-[30px]">
+                      <div className="small-text text-white mb-5">Навык</div>
+                      <Select defaultValue="frontend">
+                        <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="frontend">
+                            Frontend Developer
+                          </SelectItem>
+                          <SelectItem value="backend">
+                            Backend Developer
+                          </SelectItem>
+                          <SelectItem value="graphics">
+                            Graphics Designer
+                          </SelectItem>
+                          <SelectItem value="fullstack">
+                            Fullstack Developer
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="pb-[30px]">
+                      <div className="small-text text-white mb-5">Уровень</div>
+
+                      <Select defaultValue="1">
+                        <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1">★☆☆</SelectItem>
+                          <SelectItem value="2">★★☆</SelectItem>
+                          <SelectItem value="3">★★★</SelectItem>y
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <TextareaDarkField
+                      title="Описание"
+                      className=""
+                    ></TextareaDarkField>
+                    <div className="flex w-[100%] justify-around">
+                      <Button variant="defaultdark">Добавить</Button>
+                      <Button variant="destructive">Отмена</Button>
+                    </div>
+                  </DialogDescription>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
@@ -41,7 +97,13 @@ const EducationWorkPage = () => {
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               skill={{ difficulty: 2, title: "Frontend Developer" }}
             >
-              <Button className="w-[304px]">Редактировать</Button>
+              <ModalEdit
+                title="Карьерный навигатор"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                skill={{ difficulty: 2, title: "Frontend Developer" }}
+              >
+                <Button className="w-[304px]">Редактировать</Button>
+              </ModalEdit>
               <Button variant="destructive" className="w-[304px]">
                 Удалить
               </Button>

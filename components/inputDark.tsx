@@ -2,34 +2,37 @@
 
 import { Input } from "@/components/ui/input";
 
-interface InputFieldProps {
+interface InputDarkFieldProps {
   title: string;
   isImportant?: boolean;
   isDisabled?: boolean;
+  value?: string;
   type?: string;
   className?: string;
 }
 
-const InputField = ({
+const InputDarkField = ({
   title,
   type = "text",
   isImportant = false,
   isDisabled = false,
+  value,
   className = "",
-}: InputFieldProps) => {
+}: InputDarkFieldProps) => {
   return (
     <div className={`pb-[30px]`}>
-      <div className={`small-text `}>
+      <div className={`small-text text-white  mb-5`}>
         {title}
         {`${isImportant ? "*" : ""}`}
       </div>
       <Input
         type={type}
+        value={value}
         disabled={isDisabled}
-        className={` h-[60px] bg-c2/25 small-text ${className}`}
+        className={` h-[60px] bg-c2/25 small-text text-black bg-c2 ${className}`}
       />
     </div>
   );
 };
 
-export default InputField;
+export default InputDarkField;
