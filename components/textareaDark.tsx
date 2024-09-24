@@ -19,7 +19,7 @@ const TextareaDarkField = ({
     <div className={`pb-[30px] ${className}`}>
       <div className="small-text text-white mb-5">{title}</div>
       <Textarea
-        className="min-h-[250px] bg-c2 small-text text-black leading-snug"
+        className={` min-h-[250px] bg-c2 small-text text-black leading-snug `}
         placeholder={placeholder}
         value={value}
       />
