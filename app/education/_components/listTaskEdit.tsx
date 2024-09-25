@@ -9,8 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import InputDarkField from "@/components/inputDark";
-import TextareaDarkField from "@/components/textareaDark";
+import FormTaskEdit from "./formEditTask";
 
 interface ListTaskEditProps {
   tasks: Task[];
@@ -35,18 +34,12 @@ const ListTaskEdit = ({ tasks }: ListTaskEditProps) => {
                     Редактировать задание
                   </DialogTitle>
                   <DialogDescription className="flex flex-col">
-                    <InputDarkField
-                      title="Название"
-                      value={task.title}
-                    ></InputDarkField>
-                    <TextareaDarkField
-                      title="Описание"
-                      value={task.description}
-                    ></TextareaDarkField>
-                    <div className="flex w-[100%] justify-around">
-                      <Button variant="defaultdark">Обновить</Button>
-                      <Button variant="destructive">Отмена</Button>
-                    </div>
+                    <FormTaskEdit
+                      action="http://127.0.0.1:3001/api/tasks/update"
+                      title={task.title}
+                      description={task.description}
+                      id={task.id!}
+                    ></FormTaskEdit>
                   </DialogDescription>
                 </DialogHeader>
               </DialogContent>

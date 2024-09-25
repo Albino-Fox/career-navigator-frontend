@@ -12,4 +12,5 @@ export type Skill = {
 export type Task = {
   title: string;
   description: string;
+  id?: number;
 };
