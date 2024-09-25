@@ -1,7 +1,9 @@
+"use client";
 import { Skill } from "@/types/card";
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -19,15 +21,46 @@ import {
 import InputDarkField from "@/components/inputDark";
 import TextareaDarkField from "@/components/textareaDark";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { sendRequest } from "@/lib/utils";
+import { Method } from "@/types/header";
 
 interface ModalEditProps {
   title: string;
   skill: Skill;
+  method: Method;
   description: string;
+  action: string;
+  careerGuidances: { id: number; name: string }[];
   children: React.ReactNode;
 }
 
-const ModalEdit = ({ title, skill, description, children }: ModalEditProps) => {
+const ModalEdit = ({
+  title,
+  skill,
+  method,
+  description,
+  careerGuidances,
+  action,
+  children,
+}: ModalEditProps) => {
+  const [titleCur, setTitleCur] = useState(title);
+  const [skillId, setSkillId] = useState(careerGuidances[0].id.toString());
+  const [level, setLevel] = useState("1");
+  const [descriptionCur, setDescription] = useState(description);
+
+  const handleSubmit = () => {
+    const formData = {
+      name: titleCur,
+      career_guidance_id: skillId,
+      level,
+      description: descriptionCur,
+      employer_id: 6,
+    };
+    sendRequest(JSON.stringify(formData), action, method);
+    window.location.reload();
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -37,33 +70,35 @@ const ModalEdit = ({ title, skill, description, children }: ModalEditProps) => {
             Редактировать рабочую задачу
           </DialogTitle>
           <DialogDescription className="flex flex-col">
-            <InputDarkField title="Название" value={title}></InputDarkField>
+            <InputDarkField
+              title="Название"
+              value={title}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setTitleCur(e.target.value)
+              }
+            ></InputDarkField>
             <div className="pb-[30px]">
               <div className="small-text text-white mb-5">Навык</div>
-              <Select defaultValue={skill.title}>
+              <Select defaultValue={skillId} onValueChange={setSkillId}>
                 <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Frontend Developer">
-                    Frontend Developer
-                  </SelectItem>
-                  <SelectItem value="Backend Developer">
-                    Backend Developer
-                  </SelectItem>
-                  <SelectItem value="Graphics Designer">
-                    Graphics Designer
-                  </SelectItem>
-                  <SelectItem value="Fullstack Developer">
-                    Fullstack Developer
-                  </SelectItem>
+                  {careerGuidances.map((skill) => (
+                    <SelectItem key={skill.id} value={skill.id.toString()}>
+                      {skill.name}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
             <div className="pb-[30px]">
               <div className="small-text text-white mb-5">Уровень</div>
 
-              <Select defaultValue={skill.difficulty.toString()}>
+              <Select
+                defaultValue={skill.difficulty.toString()}
+                onValueChange={setLevel}
+              >
                 <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
                   <SelectValue />
                 </SelectTrigger>
@@ -76,12 +111,21 @@ const ModalEdit = ({ title, skill, description, children }: ModalEditProps) => {
             </div>
             <TextareaDarkField
               title="Описание"
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setDescription(e.target.value)
+              }
               value={description}
               className=""
             ></TextareaDarkField>
             <div className="flex w-[100%] justify-around">
-              <Button variant="defaultdark">Обновить</Button>
-              <Button variant="destructive">Отмена</Button>
+              <DialogClose asChild>
+                <Button variant="defaultdark" onClick={handleSubmit}>
+                  Обновить
+                </Button>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button variant="destructive">Отмена</Button>
+              </DialogClose>
             </div>
           </DialogDescription>
         </DialogHeader>

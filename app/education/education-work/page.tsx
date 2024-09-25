@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import ListCardWork from "../_components/listCardWork";
 import { Plus } from "lucide-react";
@@ -13,6 +15,7 @@ import {
 import ModalEdit from "../_components/modalEdit";
 import FormAddVacancy from "./_components/formAddVacancy";
 import { SkillName } from "@/types/card";
+import { sendRequest } from "@/lib/utils";
 
 const EducationWorkPage = async () => {
   let response = await fetch("http://127.0.0.1:3001/api/career_guidances/get");
@@ -54,6 +57,7 @@ const EducationWorkPage = async () => {
               (vacancy: {
                 title: string;
                 description: string;
+                skillId: number;
                 id: number;
                 level: number;
                 skillTitle: SkillName;
@@ -68,8 +72,11 @@ const EducationWorkPage = async () => {
                   }}
                 >
                   <ModalEdit
+                    careerGuidances={careerGuidances}
                     title={vacancy.title}
                     description={vacancy.description}
+                    action={`http://127.0.0.1:3001/api/vacancies/update/${vacancy.id}`}
+                    method="PATCH"
                     skill={{
                       difficulty: vacancy.level,
                       title: vacancy.skillTitle,
@@ -77,7 +84,17 @@ const EducationWorkPage = async () => {
                   >
                     <Button className="w-[304px]">Редактировать</Button>
                   </ModalEdit>
-                  <Button variant="destructive" className="w-[304px]">
+                  <Button
+                    variant="destructive"
+                    className="w-[304px]"
+                    onClick={() =>
+                      sendRequest(
+                        JSON.stringify({ id: vacancy.id }),
+                        "http://127.0.0.1:3001/api/vacancies/delete",
+                        "DELETE",
+                      )
+                    }
+                  >
                     Удалить
                   </Button>
                 </ListCardWork>
