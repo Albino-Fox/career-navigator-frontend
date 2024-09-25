@@ -7,24 +7,28 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Plus } from "lucide-react";
 import CardSkillSimple from "../_components/cardSkillSimple";
+import FormAddSkillBranch from "./_components/formAddSkillBranch";
+import { SkillName } from "@/types/card";
 
-const EducationUniversityPage = () => {
+const EducationUniversityPage = async () => {
+  let response = await fetch("http://127.0.0.1:3001/api/career_guidances/get");
+  const careerGuidances = await response.json();
+
+  response = await fetch(
+    "http://127.0.0.1:3001/api/career_guidance_branches/getFrom/8",
+  );
+  console.log(response);
+  const careerGuidanceBranches = await response.json();
+
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
       <div className="flex flex-col gap-[10px] items-center w-[836px]">
         <div className="big-text py-5">Обучение</div>
         <div className="flex flex-col w-[100%]">
           <div className="flex w-[100%] flex-row justify-between">
-            <div>Мои рабочие задачи</div>
+            <div>Мои ветви обучения</div>
             <Dialog>
               <DialogTrigger asChild>
                 <Button className="p-0 hover:bg-c5">
@@ -37,58 +41,24 @@ const EducationUniversityPage = () => {
                     Добавить направление обучения
                   </DialogTitle>
                   <DialogDescription className="flex flex-col">
-                    <div className="pb-[30px]">
-                      <div className="small-text text-white mb-5">Навык</div>
-                      <Select defaultValue="frontend">
-                        <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="frontend">
-                            Frontend Developer
-                          </SelectItem>
-                          <SelectItem value="backend">
-                            Backend Developer
-                          </SelectItem>
-                          <SelectItem value="graphics">
-                            Graphics Designer
-                          </SelectItem>
-                          <SelectItem value="fullstack">
-                            Fullstack Developer
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="pb-[30px]">
-                      <div className="small-text text-white mb-5">Уровень</div>
-
-                      <Select defaultValue="1">
-                        <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1">★☆☆</SelectItem>
-                          <SelectItem value="2">★★☆</SelectItem>
-                          <SelectItem value="3">★★★</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="flex w-[100%] justify-around">
-                      <Button variant="defaultdark">Добавить</Button>
-                      <Button variant="destructive">Отмена</Button>
-                    </div>
+                    <FormAddSkillBranch
+                      action="http://127.0.0.1:3001/api/career_guidance_branches/create"
+                      careerGuidances={careerGuidances}
+                    ></FormAddSkillBranch>
                   </DialogDescription>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
           </div>
           <div className="flex w-[100%] flex-col justify-center border-c1 border-[2px] rounded-[10px]  p-[10px] gap-[10px]">
-            <CardSkillSimple
-              skill={{ difficulty: 1, title: "Frontend Developer" }}
-            ></CardSkillSimple>
-            <CardSkillSimple
-              skill={{ difficulty: 2, title: "Frontend Developer" }}
-            ></CardSkillSimple>
+            {careerGuidanceBranches.map(
+              (skill: { id: number; level: number; skillTitle: SkillName }) => (
+                <CardSkillSimple
+                  key={skill.id}
+                  skill={{ difficulty: skill.level, title: skill.skillTitle }}
+                ></CardSkillSimple>
+              ),
+            )}
           </div>
         </div>
       </div>
