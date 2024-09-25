@@ -1,3 +1,4 @@
+import { Method } from "@/types/header";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -21,3 +22,15 @@ export function convertDifficultyToStars(difficulty: number) {
 
   return stars;
 }
+
+export const sendRequest = (values: string, link: string, method: Method) => {
+  fetch(link, {
+    method: method,
+    body: values,
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      console.log(data);
+    });
+};

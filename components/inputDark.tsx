@@ -6,6 +6,7 @@ interface InputDarkFieldProps {
   title: string;
   isImportant?: boolean;
   isDisabled?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   type?: string;
   className?: string;
@@ -16,6 +17,7 @@ const InputDarkField = ({
   type = "text",
   isImportant = false,
   isDisabled = false,
+  onChange,
   value,
   className = "",
 }: InputDarkFieldProps) => {
@@ -29,6 +31,7 @@ const InputDarkField = ({
         type={type}
         defaultValue={value}
         disabled={isDisabled}
+        onChange={onChange}
         className={` h-[60px] bg-c2/25 small-text text-black bg-c2 ${className}`}
       />
     </div>

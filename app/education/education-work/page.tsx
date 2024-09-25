@@ -10,18 +10,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import InputDarkField from "@/components/inputDark";
-import TextareaDarkField from "@/components/textareaDark";
 import ModalEdit from "../_components/modalEdit";
+import FormAddVacancy from "./_components/formAddVacancy";
 
-const EducationWorkPage = () => {
+const EducationWorkPage = async () => {
+  const response = await fetch(
+    "http://127.0.0.1:3001/api/career_guidances/get",
+  );
+  const careerGuidances = await response.json();
+
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
       <div className="flex flex-col gap-[10px] items-center w-[836px]">
@@ -41,51 +38,10 @@ const EducationWorkPage = () => {
                     Добавить рабочую задачу
                   </DialogTitle>
                   <DialogDescription className="flex flex-col">
-                    <InputDarkField title="Название"></InputDarkField>
-                    <div className="pb-[30px]">
-                      <div className="small-text text-white mb-5">Навык</div>
-                      <Select defaultValue="frontend">
-                        <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="frontend">
-                            Frontend Developer
-                          </SelectItem>
-                          <SelectItem value="backend">
-                            Backend Developer
-                          </SelectItem>
-                          <SelectItem value="graphics">
-                            Graphics Designer
-                          </SelectItem>
-                          <SelectItem value="fullstack">
-                            Fullstack Developer
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="pb-[30px]">
-                      <div className="small-text text-white mb-5">Уровень</div>
-
-                      <Select defaultValue="1">
-                        <SelectTrigger className="h-[60px] small-text m-0 bg-c2 text-black">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1">★☆☆</SelectItem>
-                          <SelectItem value="2">★★☆</SelectItem>
-                          <SelectItem value="3">★★★</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <TextareaDarkField
-                      title="Описание"
-                      className=""
-                    ></TextareaDarkField>
-                    <div className="flex w-[100%] justify-around">
-                      <Button variant="defaultdark">Добавить</Button>
-                      <Button variant="destructive">Отмена</Button>
-                    </div>
+                    <FormAddVacancy
+                      action="http://127.0.0.1:3001/api/vacancies/create"
+                      careerGuidances={careerGuidances}
+                    ></FormAddVacancy>
                   </DialogDescription>
                 </DialogHeader>
               </DialogContent>

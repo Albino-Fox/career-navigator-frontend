@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 interface TextareaDarkFieldProps {
   title: string;
   placeholder?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   value?: string;
   className?: string;
 }
@@ -13,6 +14,7 @@ const TextareaDarkField = ({
   title,
   placeholder,
   value,
+  onChange,
   className = "",
 }: TextareaDarkFieldProps) => {
   return (
@@ -21,6 +23,7 @@ const TextareaDarkField = ({
       <Textarea
         className={` min-h-[250px] bg-c2 small-text text-black leading-snug `}
         placeholder={placeholder}
+        onChange={onChange}
         defaultValue={value}
       />
     </div>
