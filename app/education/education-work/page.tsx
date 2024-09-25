@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import ListCardWork from "../_components/listCardWork";
 import { Plus } from "lucide-react";
@@ -87,13 +86,14 @@ const EducationWorkPage = async () => {
                   <Button
                     variant="destructive"
                     className="w-[304px]"
-                    onClick={() =>
+                    onClick={() => {
                       sendRequest(
                         JSON.stringify({ id: vacancy.id }),
                         "http://127.0.0.1:3001/api/vacancies/delete",
                         "DELETE",
-                      )
-                    }
+                      );
+                      window.location.reload();
+                    }}
                   >
                     Удалить
                   </Button>

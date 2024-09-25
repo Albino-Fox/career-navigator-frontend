@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
@@ -15,9 +16,11 @@ const HomePage = () => {
             <br />
             Начните путь к успеху сегодня!
           </div>
-          <Button size="bigfill" variant="outline">
-            Приступить к обучению
-          </Button>
+          <Link href="/education">
+            <Button size="bigfill" variant="outline">
+              Приступить к обучению
+            </Button>
+          </Link>
         </div>
         <div className="mr-[-60px]">
           <Image src="/main.svg" width={900} height={900} alt="image.svg" />
