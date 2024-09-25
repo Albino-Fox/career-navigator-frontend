@@ -9,6 +9,7 @@ const RegistrationPage = () => {
         title="Регистрация"
         btnTitle="Зарегистрироваться"
         method="POST"
+        action="http://127.0.0.1:3001/api/users/create"
         hasImportantFields
         className="pb-[25px] pt-[50px]"
       >

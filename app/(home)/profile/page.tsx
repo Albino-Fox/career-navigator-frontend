@@ -27,7 +27,7 @@ const ProfilePage = async () => {
         <Form
           btnTitle="Сохранить изменения"
           method="PATCH"
-          action="127.0.0.1:3001/api/users/update"
+          action="http://127.0.0.1:3001/api/users/1/updateProfile"
           btnFill
           className="pb-[100px]"
         >

@@ -29,6 +29,19 @@ const Form = ({
 }: FormProps) => {
   const [values, setValues] = useState<{ [key: string]: string }>({});
 
+  const sendRequest = (values: { [key: string]: string }) => {
+    if (action)
+      fetch(action, {
+        method: method,
+        body: JSON.stringify(values),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          console.log(data);
+        });
+  };
+
   useEffect(() => {
     const initialValues: { [key: string]: string } = {};
 
@@ -77,7 +90,7 @@ const Form = ({
         variant="outline"
         size={`${btnFill ? "fill" : "default"}`}
         className="mt-[45px] self-center"
-        onClick={() => console.log(JSON.stringify(values))}
+        onClick={() => sendRequest(values)}
       >
         {btnTitle}
       </Button>
