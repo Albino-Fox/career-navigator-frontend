@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import ListCardWork from "../_components/listCardWork";
 import { Plus } from "lucide-react";
@@ -14,7 +13,6 @@ import {
 import ModalEdit from "../_components/modalEdit";
 import FormAddVacancy from "./_components/formAddVacancy";
 import { SkillName } from "@/types/card";
-import { sendRequest } from "@/lib/utils";
 
 const EducationWorkPage = async () => {
   let response = await fetch("http://127.0.0.1:3001/api/career_guidances/get");
@@ -64,6 +62,8 @@ const EducationWorkPage = async () => {
                 <ListCardWork
                   key={vacancy.id}
                   title={vacancy.title}
+                  hasDeleteButton
+                  id={vacancy.id}
                   description={vacancy.description}
                   skill={{
                     difficulty: vacancy.level,
@@ -83,20 +83,6 @@ const EducationWorkPage = async () => {
                   >
                     <Button className="w-[304px]">Редактировать</Button>
                   </ModalEdit>
-                  <Button
-                    variant="destructive"
-                    className="w-[304px]"
-                    onClick={() => {
-                      sendRequest(
-                        JSON.stringify({ id: vacancy.id }),
-                        "http://127.0.0.1:3001/api/vacancies/delete",
-                        "DELETE",
-                      );
-                      window.location.reload();
-                    }}
-                  >
-                    Удалить
-                  </Button>
                 </ListCardWork>
               ),
             )}

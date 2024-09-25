@@ -1,4 +1,6 @@
-import { convertDifficultyToStars } from "@/lib/utils";
+"use client";
+
+import { convertDifficultyToStars, sendRequest } from "@/lib/utils";
 import { Skill } from "@/types/card";
 
 import {
@@ -7,17 +9,22 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 interface ListCardWorkProps {
   title: string;
   description?: string;
   skill: Skill;
+  hasDeleteButton?: boolean;
+  id?: number;
   children?: React.ReactNode;
 }
 const ListCardWork = ({
   title,
   description,
   skill,
+  hasDeleteButton = false,
+  id,
   children,
 }: ListCardWorkProps) => {
   return (
@@ -42,6 +49,24 @@ const ListCardWork = ({
 
       <div className="flex flex-row justify-between items-center">
         {children}
+        {hasDeleteButton ? (
+          <Button
+            variant="destructive"
+            className="w-[304px]"
+            onClick={() => {
+              sendRequest(
+                JSON.stringify({ id: id }),
+                "http://127.0.0.1:3001/api/vacancies/delete",
+                "DELETE",
+              );
+              window.location.reload();
+            }}
+          >
+            Удалить
+          </Button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
