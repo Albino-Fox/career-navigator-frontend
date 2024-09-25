@@ -26,7 +26,7 @@ const FormTaskEdit = ({
   const handleSubmit = () => {
     const formData = {
       id,
-      title: titleCur,
+      name: titleCur,
       description: descriptionCur,
       university_id: 8,
     };

@@ -55,6 +55,7 @@ const EducationUniversityPage = async () => {
                 <CardSkillSimple
                   key={skill.id}
                   skillBranchId={skill.id}
+                  hasEditButtons
                   skill={{ difficulty: skill.level, title: skill.skillTitle }}
                 ></CardSkillSimple>
               ),

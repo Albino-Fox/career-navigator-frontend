@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Task } from "@/types/card";
 
@@ -10,11 +12,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import FormTaskEdit from "./formEditTask";
+import { sendRequest } from "@/lib/utils";
 
 interface ListTaskEditProps {
   tasks: Task[];
+  hasDeleteButton?: boolean;
 }
-const ListTaskEdit = ({ tasks }: ListTaskEditProps) => {
+const ListTaskEdit = ({
+  tasks,
+  hasDeleteButton = false,
+}: ListTaskEditProps) => {
   return (
     <div className="flex justify-center flex-col w-[1366px] rounded-[10px] text-black p-[40px] py-0 gap-5 leading-snug">
       {tasks.map((task, idx) => (
@@ -45,7 +52,24 @@ const ListTaskEdit = ({ tasks }: ListTaskEditProps) => {
               </DialogContent>
             </Dialog>
 
-            <Button variant="destructive">Удалить</Button>
+            {hasDeleteButton ? (
+              <Button
+                variant="destructive"
+                className="w-[304px]"
+                onClick={() => {
+                  sendRequest(
+                    JSON.stringify({ id: task.id! }),
+                    "http://127.0.0.1:3001/api/tasks/delete",
+                    "DELETE",
+                  );
+                  window.location.reload();
+                }}
+              >
+                Удалить
+              </Button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       ))}

@@ -60,7 +60,7 @@ const TaskPage = async ({ params }: { params: { skillId: number } }) => {
             </DialogContent>
           </Dialog>
         </div>
-        <ListTaskEdit tasks={tasks}></ListTaskEdit>
+        <ListTaskEdit hasDeleteButton tasks={tasks}></ListTaskEdit>
       </div>
     </div>
   );
