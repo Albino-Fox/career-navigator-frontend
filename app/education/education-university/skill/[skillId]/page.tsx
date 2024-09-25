@@ -14,13 +14,19 @@ import {
 import InputDarkField from "@/components/inputDark";
 import TextareaDarkField from "@/components/textareaDark";
 
-const TaskPage = () => {
+const TaskPage = async ({ params }: { params: { skillId: number } }) => {
+  const response = await fetch(
+    `http://127.0.0.1:3001/api/career_guidance_branches/get/${params.skillId}`,
+  );
+  const careerGuidanceBranch = await response.json();
+
   return (
     <div className="flex justify-center w-[100%] pb-[75px] bg-c5 ">
       <div className="flex flex-col gap-[10px] items-center w-[100%] px-[145px] ">
         <div className="flex flex-row w-[1278px] justify-between items-center">
           <div className="big-text py-5">
-            {convertDifficultyToStars(2)} &quot;Frontend Developer&quot;
+            {convertDifficultyToStars(careerGuidanceBranch.level)} &quot;
+            {careerGuidanceBranch.skillTitle}&quot;
           </div>
           <Dialog>
             <DialogTrigger asChild>

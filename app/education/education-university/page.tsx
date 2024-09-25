@@ -19,7 +19,6 @@ const EducationUniversityPage = async () => {
   response = await fetch(
     "http://127.0.0.1:3001/api/career_guidance_branches/getFrom/8",
   );
-  console.log(response);
   const careerGuidanceBranches = await response.json();
 
   return (
@@ -55,6 +54,7 @@ const EducationUniversityPage = async () => {
               (skill: { id: number; level: number; skillTitle: SkillName }) => (
                 <CardSkillSimple
                   key={skill.id}
+                  skillBranchId={skill.id}
                   skill={{ difficulty: skill.level, title: skill.skillTitle }}
                 ></CardSkillSimple>
               ),
