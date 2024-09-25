@@ -12,12 +12,14 @@ import {
 } from "@/components/ui/dialog";
 import ModalEdit from "../_components/modalEdit";
 import FormAddVacancy from "./_components/formAddVacancy";
+import { SkillName } from "@/types/card";
 
 const EducationWorkPage = async () => {
-  const response = await fetch(
-    "http://127.0.0.1:3001/api/career_guidances/get",
-  );
+  let response = await fetch("http://127.0.0.1:3001/api/career_guidances/get");
   const careerGuidances = await response.json();
+
+  response = await fetch("http://127.0.0.1:3001/api/vacancies/getFrom/6");
+  const vacancies = await response.json();
 
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
@@ -37,7 +39,7 @@ const EducationWorkPage = async () => {
                   <DialogTitle className="text-white text-center big-text font-normal py-[40px]">
                     Добавить рабочую задачу
                   </DialogTitle>
-                  <DialogDescription className="flex flex-col">
+                  <DialogDescription className="flex flex-col" asChild>
                     <FormAddVacancy
                       action="http://127.0.0.1:3001/api/vacancies/create"
                       careerGuidances={careerGuidances}
@@ -48,42 +50,39 @@ const EducationWorkPage = async () => {
             </Dialog>
           </div>
           <div className="flex w-[100%] flex-col justify-center border-c1 border-[2px] rounded-[10px]  p-[10px]">
-            <ListCardWork
-              title="Карьерный навигатор"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-              skill={{ difficulty: 2, title: "Frontend Developer" }}
-            >
-              <ModalEdit
-                title="Карьерный навигатор"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                skill={{ difficulty: 2, title: "Frontend Developer" }}
-              >
-                <Button className="w-[304px]">Редактировать</Button>
-              </ModalEdit>
-              <Button variant="destructive" className="w-[304px]">
-                Удалить
-              </Button>
-            </ListCardWork>
-            <ListCardWork
-              title="Карьерный навигатор"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-              skill={{ difficulty: 2, title: "Frontend Developer" }}
-            >
-              <Button className="w-[304px]">Редактировать</Button>
-              <Button variant="destructive" className="w-[304px]">
-                Удалить
-              </Button>
-            </ListCardWork>
-            <ListCardWork
-              title="Карьерный навигатор"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-              skill={{ difficulty: 2, title: "Frontend Developer" }}
-            >
-              <Button className="w-[304px]">Редактировать</Button>
-              <Button variant="destructive" className="w-[304px]">
-                Удалить
-              </Button>
-            </ListCardWork>
+            {vacancies.map(
+              (vacancy: {
+                title: string;
+                description: string;
+                id: number;
+                level: number;
+                skillTitle: SkillName;
+              }) => (
+                <ListCardWork
+                  key={vacancy.id}
+                  title={vacancy.title}
+                  description={vacancy.description}
+                  skill={{
+                    difficulty: vacancy.level,
+                    title: vacancy.skillTitle,
+                  }}
+                >
+                  <ModalEdit
+                    title={vacancy.title}
+                    description={vacancy.description}
+                    skill={{
+                      difficulty: vacancy.level,
+                      title: vacancy.skillTitle,
+                    }}
+                  >
+                    <Button className="w-[304px]">Редактировать</Button>
+                  </ModalEdit>
+                  <Button variant="destructive" className="w-[304px]">
+                    Удалить
+                  </Button>
+                </ListCardWork>
+              ),
+            )}
           </div>
         </div>
       </div>

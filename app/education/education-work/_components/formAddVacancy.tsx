@@ -84,12 +84,12 @@ const FormAddVacancy = ({ action, careerGuidances }: FormAddVacancyProps) => {
         className=""
       ></TextareaDarkField>
       <div className="flex w-[100%] justify-around">
-        <DialogClose>
+        <DialogClose asChild>
           <Button variant="defaultdark" onClick={handleSubmit}>
             Добавить
           </Button>
         </DialogClose>
-        <DialogClose>
+        <DialogClose asChild>
           <Button variant="destructive">Отмена</Button>
         </DialogClose>
       </div>
