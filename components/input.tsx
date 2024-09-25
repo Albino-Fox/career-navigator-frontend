@@ -43,7 +43,7 @@ const InputField = ({
         type={type}
         disabled={isDisabled}
         name={name}
-        value={curValue}
+        defaultValue={curValue}
         onChange={handleChange}
         className={` h-[60px] bg-c2/25 small-text ${className}`}
       />

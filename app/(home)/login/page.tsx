@@ -11,8 +11,8 @@ const LoginPage = () => {
         btnTitle="Войти"
         className="pb-[25px] pt-[50px]"
       >
-        <InputField type="email" title="Почта"></InputField>
-        <InputField type="password" title="Пароль"></InputField>
+        <InputField type="email" title="Почта" name="email"></InputField>
+        <InputField type="password" title="Пароль" name="password"></InputField>
       </Form>
       <div className="text-center small-text pb-[100px]">
         Нет аккаунта?{" "}

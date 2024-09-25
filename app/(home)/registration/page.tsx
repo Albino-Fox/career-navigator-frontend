@@ -8,21 +8,30 @@ const RegistrationPage = () => {
       <Form
         title="Регистрация"
         btnTitle="Зарегистрироваться"
+        method="POST"
         hasImportantFields
         className="pb-[25px] pt-[50px]"
       >
-        <InputField type="email" title="Почта" isImportant></InputField>
-        <InputField type="password" title="Пароль" isImportant></InputField>
         <InputField
-          type="password"
-          title="Повторите пароль"
+          type="email"
+          title="Почта"
+          name="email"
           isImportant
         ></InputField>
-        <InputField title="Имя" isImportant></InputField>
-        <InputField title="Фамилия"></InputField>
-        <InputField title="Отчество"></InputField>
-        {/* TODO: Maybe add phone validation*/}
-        <InputField title="Номер телефона" isImportant></InputField>
+        <InputField
+          type="password"
+          title="Пароль"
+          name="password"
+          isImportant
+        ></InputField>
+        <InputField title="Имя" name="name" isImportant></InputField>
+        <InputField title="Фамилия" name="surname"></InputField>
+        <InputField title="Отчество" name="patronymic"></InputField>
+        <InputField
+          title="Номер телефона"
+          name="phone_number"
+          isImportant
+        ></InputField>
       </Form>
       <div className="text-center small-text pb-[100px]">
         Есть аккаунт?{" "}
