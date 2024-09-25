@@ -21,7 +21,7 @@ const TextareaDarkField = ({
       <Textarea
         className={` min-h-[250px] bg-c2 small-text text-black leading-snug `}
         placeholder={placeholder}
-        value={value}
+        defaultValue={value}
       />
     </div>
   );

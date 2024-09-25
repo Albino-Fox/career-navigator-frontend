@@ -27,7 +27,7 @@ const InputDarkField = ({
       </div>
       <Input
         type={type}
-        value={value}
+        defaultValue={value}
         disabled={isDisabled}
         className={` h-[60px] bg-c2/25 small-text text-black bg-c2 ${className}`}
       />
