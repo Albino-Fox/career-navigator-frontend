@@ -14,8 +14,11 @@ import ListCardWork from "./_components/listCardWork";
 import { SkillName } from "@/types/card";
 
 const EducationPage = async () => {
-  const response = await fetch("http://127.0.0.1:3001/api/vacancies/get");
+  let response = await fetch("http://127.0.0.1:3001/api/vacancies/get");
   const vacancies = await response.json();
+
+  response = await fetch("http://127.0.0.1:3001/api/users/getUniversities");
+  const universities = await response.json();
 
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
@@ -91,82 +94,20 @@ const EducationPage = async () => {
                     Вузы
                   </DialogTitle>
                   <DialogDescription>
-                    <CardUniversity
-                      title="Университет имени Ливентеля"
-                      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                      skills={[
-                        {
-                          difficulty: 2,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 3,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 1,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 2,
-                          title: "Graphic Designer",
-                        },
-                        {
-                          difficulty: 1,
-                          title: "Frontend Developer",
-                        },
-                      ]}
-                    ></CardUniversity>
-                    <CardUniversity
-                      title="Университет имени Ливентеля"
-                      skills={[
-                        {
-                          difficulty: 2,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 3,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 1,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 2,
-                          title: "Graphic Designer",
-                        },
-                        {
-                          difficulty: 1,
-                          title: "Frontend Developer",
-                        },
-                      ]}
-                    ></CardUniversity>
-                    <CardUniversity
-                      title="Университет имени Ливентеля"
-                      skills={[
-                        {
-                          difficulty: 2,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 3,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 1,
-                          title: "Frontend Developer",
-                        },
-                        {
-                          difficulty: 2,
-                          title: "Graphic Designer",
-                        },
-                        {
-                          difficulty: 1,
-                          title: "Frontend Developer",
-                        },
-                      ]}
-                    ></CardUniversity>
+                    {universities.map(
+                      (university: {
+                        id: number;
+                        name: string;
+                        description: string;
+                      }) => (
+                        <CardUniversity
+                          key={university.id}
+                          id={university.id}
+                          title={university.name}
+                          description={university.description}
+                        ></CardUniversity>
+                      ),
+                    )}
                   </DialogDescription>
                 </DialogHeader>
               </DialogContent>

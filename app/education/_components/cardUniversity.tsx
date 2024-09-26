@@ -1,6 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { convertDifficultyToStars } from "@/lib/utils";
-import { Skill } from "@/types/card";
 
 import {
   Accordion,
@@ -8,17 +9,23 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useEffect, useState } from "react";
 
 interface CardUniversityProps {
   title: string;
+  id: number;
   description?: string;
-  skills: Skill[];
 }
-const CardUniversity = ({
-  title,
-  description,
-  skills,
-}: CardUniversityProps) => {
+const CardUniversity = ({ title, id, description }: CardUniversityProps) => {
+  const [skills, setSkills] = useState([]);
+  useEffect(() => {
+    fetch(`http://127.0.0.1:3001/api/career_guidance_branches/getFrom/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSkills(data);
+      });
+  }, [id]);
+
   return (
     <div className="bg-c1 p-[25px] mb-[25px] rounded-[10px] text-black leading-none">
       <div className="big-text -mt-2">{title}</div>
@@ -38,11 +45,22 @@ const CardUniversity = ({
       )}
 
       <div className="py-5 flex flex-wrap justify-between">
-        {skills.map((skill, idx) => (
-          <div className="normal-text w-[50%] leading-snug" key={idx}>
-            {convertDifficultyToStars(skill.difficulty)} {skill.title}
-          </div>
-        ))}
+        {skills
+          ? skills.map(
+              (skill: {
+                skillTitle: string;
+                level: number;
+                skillId: number;
+              }) => (
+                <div
+                  className="normal-text w-[50%] leading-snug"
+                  key={skill.skillId}
+                >
+                  {convertDifficultyToStars(skill.level)} {skill.skillTitle}
+                </div>
+              ),
+            )
+          : ""}
       </div>
       <Button>Посмотреть задания</Button>
     </div>
