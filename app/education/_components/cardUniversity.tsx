@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface CardUniversityProps {
   title: string;
@@ -62,7 +63,9 @@ const CardUniversity = ({ title, id, description }: CardUniversityProps) => {
             )
           : ""}
       </div>
-      <Button>Посмотреть задания</Button>
+      <Link href={`/education/hei/${id}`}>
+        <Button>Посмотреть задания</Button>
+      </Link>
     </div>
   );
 };
