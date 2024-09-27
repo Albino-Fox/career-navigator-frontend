@@ -20,6 +20,7 @@ const FormAnswer = ({ action, id }: FormAnswerProps) => {
       answer,
     };
     sendRequest(JSON.stringify(formData), action, "POST");
+    window.location.reload();
   };
 
   return (

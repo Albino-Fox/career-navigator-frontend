@@ -28,16 +28,17 @@ const CheckPage = async () => {
         answersDetailed.taskName = task.name;
         answersDetailed.taskDescription = task.description;
 
-        task.Answers.forEach((Answer) => {
-          answersDetailed.text = Answer.answer;
-          answersDetailed.id = Answer.id;
-          answersDetailed.user_id = Answer.user_id;
+        task.Answers.forEach((answer) => {
+          answersDetailed.text = answer.answer;
+          answersDetailed.id = answer.id;
+          answersDetailed.user_id = answer.user_id;
 
-          answers.push(answersDetailed);
+          answers.push(JSON.parse(JSON.stringify(answersDetailed)));
         });
       });
     },
   );
+
   return (
     <div className="flex justify-center w-[100%] pb-[75px] bg-c5 ">
       <div className="flex flex-col gap-[10px] items-center w-[100%] px-[145px] ">
