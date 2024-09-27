@@ -1,3 +1,5 @@
+"use client";
+
 import { Skill, Task } from "@/types/card";
 
 import {
@@ -7,20 +9,38 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import CardUniversityMoreList from "./cardUniversityMoreList";
+import { Button } from "@/components/ui/button";
+import { sendRequest } from "@/lib/utils";
 
 interface CardUniversityMoreProps {
   skill: Skill;
+  university_id: number;
+  career_guidance_id: number;
   difficultyTasks: {
     level: number;
     tasks: Task[];
   }[];
-  children?: React.ReactNode;
 }
 const CardUniversityMore = ({
   skill,
   difficultyTasks,
-  children,
+  university_id,
+  career_guidance_id,
 }: CardUniversityMoreProps) => {
+  const handleSubmit = () => {
+    const formData = {
+      university_id,
+      career_guidance_id,
+      user_id: 1,
+    };
+    sendRequest(
+      JSON.stringify(formData),
+      "http://127.0.0.1:3001/api/student_skills/create",
+      "POST",
+    );
+    window.location.reload();
+  };
+
   return (
     <div className="flex justify-center flex-col w-[1366px] rounded-[10px] text-black bg-c1 ">
       <Accordion type="multiple">
@@ -39,7 +59,12 @@ const CardUniversityMore = ({
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      {children}
+      <Button
+        className="w-[244px] h-[60px] self-center mb-5"
+        onClick={handleSubmit}
+      >
+        Обучиться этому
+      </Button>
     </div>
   );
 };

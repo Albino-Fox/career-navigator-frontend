@@ -27,7 +27,7 @@ const ListTaskEdit = ({
       {tasks.map((task, idx) => (
         <div className="bg-c1 rounded-[10px]  p-[30px]" key={idx}>
           <div className="normal-text mb-2">
-            {idx + 1}. {task.title}
+            {idx + 1}. {task.name}
           </div>
           <div className="small-text leading-snug mb-5">{task.description}</div>
           <div className="flex w-[100%] justify-around">
@@ -43,7 +43,7 @@ const ListTaskEdit = ({
                   <DialogDescription className="flex flex-col">
                     <FormTaskEdit
                       action="http://127.0.0.1:3001/api/tasks/update"
-                      title={task.title}
+                      title={task.name}
                       description={task.description}
                       id={task.id!}
                     ></FormTaskEdit>

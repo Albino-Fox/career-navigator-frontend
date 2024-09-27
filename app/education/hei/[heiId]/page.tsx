@@ -30,13 +30,11 @@ const UniversityPage = async ({ params }: { params: { heiId: number } }) => {
           }) => (
             <CardUniversityMore
               key={careerGuidance.skillId}
+              university_id={university.id}
+              career_guidance_id={careerGuidance.skillId}
               skill={{ difficulty: 0, title: careerGuidance.name }}
               difficultyTasks={careerGuidance.branches}
-            >
-              <Button className="w-[244px] h-[60px] self-center mb-5">
-                Обучиться этому
-              </Button>
-            </CardUniversityMore>
+            ></CardUniversityMore>
           ),
         )}
       </div>

@@ -25,7 +25,7 @@ const TaskPage = async ({ params }: { params: { skillId: number } }) => {
   let tasks = await response.json();
   tasks = tasks.map(
     (task: { name: string; description: string; id: number }) => ({
-      title: task.name,
+      name: task.name,
       description: task.description,
       id: task.id,
     }),
