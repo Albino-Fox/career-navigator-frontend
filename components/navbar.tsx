@@ -42,11 +42,13 @@ const Navbar = () => {
             Обучение
           </Button>
         </Link>
-        <Button
-          size="fix"
-          variant="icon"
-          className="w-[90px] h-[90px]"
-        ></Button>
+        <Link href="/profile">
+          <Button
+            size="fix"
+            variant="icon"
+            className="w-[90px] h-[90px]"
+          ></Button>
+        </Link>
       </div>
     </div>
   );

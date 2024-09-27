@@ -1,5 +1,8 @@
+"use client";
+
 import { convertDifficultyToStars } from "@/lib/utils";
 import { Task } from "@/types/card";
+import { usePathname } from "next/navigation";
 
 import {
   Accordion,
@@ -8,6 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface CardUniversityMoreListProps {
   difficulty: number;
@@ -20,6 +24,7 @@ const CardUniversityMoreList = ({
   tasks,
   linkType = false,
 }: CardUniversityMoreListProps) => {
+  const pathname = usePathname();
   return (
     <div>
       <div className="w-[100%] border-b-[2px] border-black pt-5 normal-text">
@@ -41,11 +46,13 @@ const CardUniversityMoreList = ({
           ))}
         </Accordion>
       ) : (
-        tasks.map((task, idx2) => (
-          <div key={idx2} className="pt-2 small-text">
-            <Button variant="link" size="text" className="small-text">
-              {idx2 + 1}. {task.name}
-            </Button>
+        tasks.map((task, idx) => (
+          <div key={idx} className="pt-2 small-text">
+            <Link href={`${pathname}/${task.id}`}>
+              <Button variant="link" size="text" className="small-text">
+                {idx + 1}. {task.name}
+              </Button>
+            </Link>
           </div>
         ))
       )}
