@@ -12,6 +12,7 @@ const CheckPage = async () => {
       Tasks: {
         name: string;
         description: string;
+        id: number;
         Answers: { answer: string; user_id: number; id: number }[];
       }[];
     }) => {
@@ -21,12 +22,14 @@ const CheckPage = async () => {
         taskName: "",
         taskDescription: "",
         text: "",
+        task_id: -1,
         user_id: -1,
         id: -1,
       };
       branch.Tasks.forEach((task) => {
         answersDetailed.taskName = task.name;
         answersDetailed.taskDescription = task.description;
+        answersDetailed.task_id = task.id;
 
         task.Answers.forEach((answer) => {
           answersDetailed.text = answer.answer;
@@ -47,6 +50,8 @@ const CheckPage = async () => {
           {answers.map((answer) => (
             <CardTaskAnswer
               key={answer.id}
+              id={answer.id}
+              task_id={answer.task_id}
               skill={{ difficulty: answer.level, title: answer.branchName }}
               task={{
                 name: answer.taskName,

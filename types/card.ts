@@ -18,6 +18,7 @@ export type AnswersDetailed = {
   level: number;
   id: number;
   user_id: number;
+  task_id: number;
   branchName: SkillName;
   taskName: string;
   taskDescription: string;

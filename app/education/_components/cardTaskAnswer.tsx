@@ -1,4 +1,6 @@
-import { convertDifficultyToStars } from "@/lib/utils";
+"use client";
+
+import { convertDifficultyToStars, sendRequest } from "@/lib/utils";
 import { Skill, Task } from "@/types/card";
 
 import {
@@ -12,10 +14,37 @@ import { Textarea } from "@/components/ui/textarea";
 
 interface CardTaskAnswerProps {
   task: Task;
+  id: number;
+  task_id: number;
   skill: Skill;
   answer: string;
 }
-const CardTaskAnswer = ({ task, skill, answer }: CardTaskAnswerProps) => {
+const CardTaskAnswer = ({
+  task,
+  skill,
+  task_id,
+  id,
+  answer,
+}: CardTaskAnswerProps) => {
+  const handleSubmit = () => {
+    sendRequest(
+      JSON.stringify({ task_id, is_done: true }),
+      "http://127.0.0.1:3001/api/task_statuses/update",
+      "PATCH",
+    );
+    sendRequest(
+      JSON.stringify({ id }),
+      "http://127.0.0.1:3001/api/answers/delete",
+      "DELETE",
+    );
+  };
+  const handleDecline = () => {
+    sendRequest(
+      JSON.stringify({ id }),
+      "http://127.0.0.1:3001/api/answers/delete",
+      "DELETE",
+    );
+  };
   return (
     <div className="bg-c1 rounded-[10px] p-[40px] min-w-[1278px]">
       <div className="big-text">{task.name}</div>
@@ -49,8 +78,12 @@ const CardTaskAnswer = ({ task, skill, answer }: CardTaskAnswerProps) => {
         </AccordionItem>
       </Accordion>
       <div className="flex flex-row justify-around gap-[10px] flex-grow-0 mt-5">
-        <Button className="">Принять</Button>
-        <Button className="">Отклонить</Button>
+        <Button className="" onClick={handleSubmit}>
+          Принять
+        </Button>
+        <Button className="" onClick={handleDecline}>
+          Отклонить
+        </Button>
       </div>
     </div>
   );
