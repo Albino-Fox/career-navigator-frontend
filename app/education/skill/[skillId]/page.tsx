@@ -6,15 +6,15 @@ const UniversityPage = () => {
       difficulty: 1,
       tasks: [
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
       ],
@@ -23,47 +23,47 @@ const UniversityPage = () => {
       difficulty: 2,
       tasks: [
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
         {
-          title: "Яда-яда",
+          name: "Яда-яда",
           description: "a",
         },
       ],

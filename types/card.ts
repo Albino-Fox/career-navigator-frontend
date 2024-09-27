@@ -10,7 +10,7 @@ export type Skill = {
 };
 
 export type Task = {
-  title: string;
+  name: string;
   description: string;
   id?: number;
 };
