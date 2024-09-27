@@ -20,6 +20,9 @@ const EducationPage = async () => {
   response = await fetch("http://127.0.0.1:3001/api/users/getUniversities");
   const universities = await response.json();
 
+  response = await fetch("http://127.0.0.1:3001/api/student_skills/get/1");
+  const skillBranches = await response.json();
+
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
       <div className="flex flex-col gap-[10px] items-center w-[836px]">
@@ -117,22 +120,20 @@ const EducationPage = async () => {
         <div className="flex flex-col w-[100%]">
           <div>Навыки</div>
           <div className="flex w-[100%] flex-col justify-center border-c1 border-[2px] rounded-[10px] gap-[10px] p-[10px]">
-            <CardSkill
-              skill={{ difficulty: 2, title: "Fullstack Developer" }}
-              university="Университет имени Ливенталя"
-            ></CardSkill>
-            <CardSkill
-              skill={{ difficulty: 3, title: "Fullstack Developer" }}
-              university="Университет имени Ливенталя"
-            ></CardSkill>
-            <CardSkill
-              skill={{ difficulty: 1, title: "Fullstack Developer" }}
-              university="Университет имени Ливенталя"
-            ></CardSkill>
-            <CardSkill
-              skill={{ difficulty: 0, title: "Fullstack Developer" }}
-              university="Университет имени Ливенталя"
-            ></CardSkill>
+            {skillBranches.map((branch, idx: number) => (
+              <CardSkill
+                key={idx}
+                career_guidance_id={
+                  branch.CareerGuidanceBranch.CareerGuidance.id
+                }
+                university_id={branch.CareerGuidanceBranch.university_id}
+                skill={{
+                  difficulty: branch.CareerGuidanceBranch.level,
+                  title: branch.CareerGuidanceBranch.career_guidance_id,
+                }}
+                university={branch.CareerGuidanceBranch.university_id.toString()}
+              ></CardSkill>
+            ))}
           </div>
         </div>
       </div>
