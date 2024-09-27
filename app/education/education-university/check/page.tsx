@@ -1,38 +1,59 @@
+import { AnswersDetailed, SkillName } from "@/types/card";
 import CardTaskAnswer from "../../_components/cardTaskAnswer";
 
-const CheckPage = () => {
+const CheckPage = async () => {
+  const response = await fetch("http://127.0.0.1:3001/api/answers/get/8");
+  const careerGuidances = await response.json();
+  const answers: AnswersDetailed[] = [];
+  careerGuidances.forEach(
+    (branch: {
+      CareerGuidance: { name: SkillName };
+      level: number;
+      Tasks: {
+        name: string;
+        description: string;
+        Answers: { answer: string; user_id: number; id: number }[];
+      }[];
+    }) => {
+      const answersDetailed: AnswersDetailed = {
+        branchName: branch.CareerGuidance.name,
+        level: branch.level,
+        taskName: "",
+        taskDescription: "",
+        text: "",
+        user_id: -1,
+        id: -1,
+      };
+      branch.Tasks.forEach((task) => {
+        answersDetailed.taskName = task.name;
+        answersDetailed.taskDescription = task.description;
+
+        task.Answers.forEach((Answer) => {
+          answersDetailed.text = Answer.answer;
+          answersDetailed.id = Answer.id;
+          answersDetailed.user_id = Answer.user_id;
+
+          answers.push(answersDetailed);
+        });
+      });
+    },
+  );
   return (
     <div className="flex justify-center w-[100%] pb-[75px] bg-c5 ">
       <div className="flex flex-col gap-[10px] items-center w-[100%] px-[145px] ">
         <div className="big-text py-5">Проверка заданий</div>
         <div className="flex flex-col w-[1278px] justify-between items-center rounded-[10px] text-black gap-[20px]">
-          <CardTaskAnswer
-            skill={{ difficulty: 2, title: "Frontend Developer" }}
-            task={{
-              title: "Сделать инициализацию проекта на своём компьютере",
-              description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            }}
-            answer=":3"
-          ></CardTaskAnswer>
-          <CardTaskAnswer
-            skill={{ difficulty: 2, title: "Frontend Developer" }}
-            task={{
-              title: "Сделать инициализацию проекта на своём компьютере",
-              description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            }}
-            answer=":3"
-          ></CardTaskAnswer>
-          <CardTaskAnswer
-            skill={{ difficulty: 2, title: "Frontend Developer" }}
-            task={{
-              title: "Сделать инициализацию проекта на своём компьютере",
-              description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            }}
-            answer=":3"
-          ></CardTaskAnswer>
+          {answers.map((answer) => (
+            <CardTaskAnswer
+              key={answer.id}
+              skill={{ difficulty: answer.level, title: answer.branchName }}
+              task={{
+                name: answer.taskName,
+                description: answer.taskDescription,
+              }}
+              answer={answer.text}
+            ></CardTaskAnswer>
+          ))}
         </div>
       </div>
     </div>

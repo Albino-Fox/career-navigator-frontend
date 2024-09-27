@@ -14,3 +14,12 @@ export type Task = {
   description: string;
   id?: number;
 };
+export type AnswersDetailed = {
+  level: number;
+  id: number;
+  user_id: number;
+  branchName: SkillName;
+  taskName: string;
+  taskDescription: string;
+  text: string;
+};

@@ -17,8 +17,8 @@ interface CardTaskAnswerProps {
 }
 const CardTaskAnswer = ({ task, skill, answer }: CardTaskAnswerProps) => {
   return (
-    <div className="bg-c1 rounded-[10px] p-[40px]">
-      <div className="big-text">{task.title}</div>
+    <div className="bg-c1 rounded-[10px] p-[40px] min-w-[1278px]">
+      <div className="big-text">{task.name}</div>
       <div>
         {convertDifficultyToStars(skill.difficulty)} {skill.title}
       </div>
