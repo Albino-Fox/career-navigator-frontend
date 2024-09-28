@@ -20,7 +20,7 @@ const EducationPage = async () => {
   response = await fetch("http://127.0.0.1:3001/api/users/getUniversities");
   const universities = await response.json();
 
-  response = await fetch("http://127.0.0.1:3001/api/student_skills/get/1");
+  response = await fetch("http://127.0.0.1:3001/api/student_skills/getMax/1");
   const skillBranches = await response.json();
 
   return (

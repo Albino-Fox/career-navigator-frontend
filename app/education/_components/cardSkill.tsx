@@ -24,18 +24,7 @@ const CardSkill = ({
         <div className="small-text break-all">{university}</div>
       </div>
       <div className="flex flex-col gap-[10px] flex-grow-0">
-        {skill.difficulty === 0 ? (
-          <>
-            <Link
-              href={`/education/hei/${university_id}/skill/${career_guidance_id}`}
-            >
-              <Button className="">Продолжить изучение</Button>
-            </Link>
-            <Button className="" variant="destructive">
-              Отказаться от изучения
-            </Button>
-          </>
-        ) : skill.difficulty === 3 ? (
+        {skill.difficulty === 3 ? (
           ""
         ) : (
           <Link
