@@ -6,11 +6,6 @@ const TaskPage = async ({
 }: {
   params: { taskId: number; heiId: number };
 }) => {
-  // let response = await fetch(
-  //   `http://127.0.0.1:3001/api/tasks/get/${params.taskId}`,
-  // );
-  // const task = await response.json();
-
   let response = await fetch(
     `http://127.0.0.1:3001/api/users/getUniversity/${params.heiId}`,
   );

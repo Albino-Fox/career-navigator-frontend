@@ -21,7 +21,7 @@ const CardSkill = ({
         <div className="normal-text">
           {convertDifficultyToStars(skill.difficulty)} {skill.title}
         </div>
-        <div className="small-text ">{university}</div>
+        <div className="small-text break-all">{university}</div>
       </div>
       <div className="flex flex-col gap-[10px] flex-grow-0">
         {skill.difficulty === 0 ? (

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import CardUniversityMore from "../../_components/cardUniversityMore";
 import { SkillName } from "@/types/card";
 

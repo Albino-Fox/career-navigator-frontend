@@ -120,20 +120,30 @@ const EducationPage = async () => {
         <div className="flex flex-col w-[100%]">
           <div>Навыки</div>
           <div className="flex w-[100%] flex-col justify-center border-c1 border-[2px] rounded-[10px] gap-[10px] p-[10px]">
-            {skillBranches.map((branch, idx: number) => (
-              <CardSkill
-                key={idx}
-                career_guidance_id={
-                  branch.CareerGuidanceBranch.CareerGuidance.id
-                }
-                university_id={branch.CareerGuidanceBranch.university_id}
-                skill={{
-                  difficulty: branch.CareerGuidanceBranch.level,
-                  title: branch.CareerGuidanceBranch.career_guidance_id,
-                }}
-                university={branch.CareerGuidanceBranch.university_id.toString()}
-              ></CardSkill>
-            ))}
+            {skillBranches.map(
+              (branch: {
+                CareerGuidanceBranch: {
+                  id: number;
+                  CareerGuidance: { id: number; name: SkillName };
+                  User: { name: string };
+                  university_id: number;
+                  level: number;
+                };
+              }) => (
+                <CardSkill
+                  key={branch.CareerGuidanceBranch.id}
+                  career_guidance_id={
+                    branch.CareerGuidanceBranch.CareerGuidance.id
+                  }
+                  university_id={branch.CareerGuidanceBranch.university_id}
+                  skill={{
+                    difficulty: branch.CareerGuidanceBranch.level,
+                    title: branch.CareerGuidanceBranch.CareerGuidance.name,
+                  }}
+                  university={branch.CareerGuidanceBranch.User.name}
+                ></CardSkill>
+              ),
+            )}
           </div>
         </div>
       </div>
