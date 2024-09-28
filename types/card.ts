@@ -13,7 +13,9 @@ export type Task = {
   name: string;
   description: string;
   id?: number;
+  is_done?: boolean;
 };
+
 export type AnswersDetailed = {
   level: number;
   id: number;

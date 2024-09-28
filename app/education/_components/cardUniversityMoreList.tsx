@@ -15,7 +15,7 @@ import Link from "next/link";
 
 interface CardUniversityMoreListProps {
   difficulty: number;
-  tasks: Task[];
+  tasks: (Task & { TaskStatuses: { is_done: boolean }[] })[];
   linkType?: boolean;
 }
 
@@ -48,11 +48,23 @@ const CardUniversityMoreList = ({
       ) : (
         tasks.map((task, idx) => (
           <div key={idx} className="pt-2 small-text">
-            <Link href={`${pathname}/${task.id}`}>
-              <Button variant="link" size="text" className="small-text">
-                {idx + 1}. {task.name}
-              </Button>
-            </Link>
+            {task.TaskStatuses.length > 0 && task.TaskStatuses[0].is_done ? (
+              <Link href={`${pathname}/${task.id}`}>
+                <Button
+                  variant="link"
+                  size="text"
+                  className={"small-text line-through text-gray-900"}
+                >
+                  {idx + 1}. {task.name}
+                </Button>
+              </Link>
+            ) : (
+              <Link href={`${pathname}/${task.id}`}>
+                <Button variant="link" size="text" className={"small-text"}>
+                  {idx + 1}. {task.name}
+                </Button>
+              </Link>
+            )}
           </div>
         ))
       )}

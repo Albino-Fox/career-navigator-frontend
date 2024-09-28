@@ -9,11 +9,12 @@ const UniversityPage = async ({
     `http://127.0.0.1:3001/api/career_guidance_branches/getTasksOfCareerGuidance/${params.skillId}`,
     {
       method: "POST",
-      body: JSON.stringify({ university_id: params.heiId }),
+      body: JSON.stringify({ university_id: params.heiId, user_id: 1 }),
       headers: { "Content-Type": "application/json" },
     },
   );
   const universityCareerGuidanceInfo = await response.json();
+
   response = await fetch(
     `http://127.0.0.1:3001/api/users/getUniversity/${params.heiId}`,
   );

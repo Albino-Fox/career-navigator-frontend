@@ -53,7 +53,11 @@ const CardUniversityMore = ({
               <CardUniversityMoreList
                 key={difficultyTasksPart.level}
                 difficulty={difficultyTasksPart.level}
-                tasks={difficultyTasksPart.tasks}
+                tasks={
+                  difficultyTasksPart.tasks as (Task & {
+                    TaskStatuses: { is_done: boolean }[];
+                  })[]
+                }
               ></CardUniversityMoreList>
             ))}
           </AccordionContent>
