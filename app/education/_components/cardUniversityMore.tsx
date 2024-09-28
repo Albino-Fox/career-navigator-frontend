@@ -11,6 +11,7 @@ import {
 import CardUniversityMoreList from "./cardUniversityMoreList";
 import { Button } from "@/components/ui/button";
 import { sendRequest } from "@/lib/utils";
+import Link from "next/link";
 
 interface CardUniversityMoreProps {
   skill: Skill;
@@ -38,7 +39,6 @@ const CardUniversityMore = ({
       "http://127.0.0.1:3001/api/student_skills/create",
       "POST",
     );
-    window.location.reload();
   };
 
   return (
@@ -59,12 +59,12 @@ const CardUniversityMore = ({
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <Button
+      <Link
+        href={`./${university_id}/skill/${career_guidance_id}`}
         className="w-[244px] h-[60px] self-center mb-5"
-        onClick={handleSubmit}
       >
-        Обучиться этому
-      </Button>
+        <Button onClick={handleSubmit}>Обучиться этому</Button>
+      </Link>
     </div>
   );
 };
