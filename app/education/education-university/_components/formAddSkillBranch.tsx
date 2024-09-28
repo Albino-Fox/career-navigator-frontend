@@ -28,6 +28,7 @@ const FormAddSkillBranch = ({
     const formData = {
       career_guidance_id: skillId,
       level,
+      // TODO: change user_id to cookie's one (uni)
       university_id: 8,
     };
     sendRequest(JSON.stringify(formData), action, "POST");

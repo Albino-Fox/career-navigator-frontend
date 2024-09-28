@@ -28,6 +28,7 @@ const FormTaskEdit = ({
       id,
       name: titleCur,
       description: descriptionCur,
+      // TODO: change user_id to cookie's one (uni)
       university_id: 8,
     };
     sendRequest(JSON.stringify(formData), action, "PATCH");

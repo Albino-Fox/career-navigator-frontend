@@ -20,6 +20,7 @@ const EducationWorkPage = async () => {
   let response = await fetch("http://127.0.0.1:3001/api/career_guidances/get");
   const careerGuidances = await response.json();
 
+  // TODO: change user_id to cookie's one (work)
   response = await fetch("http://127.0.0.1:3001/api/vacancies/getFrom/6");
   const vacancies = await response.json();
 

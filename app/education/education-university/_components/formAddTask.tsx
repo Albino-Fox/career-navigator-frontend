@@ -21,6 +21,7 @@ const FormAddTask = ({ action, skillBranchId }: FormAddTaskProps) => {
       career_guidance_branch_id: skillBranchId,
       name: title,
       description,
+      // TODO: change user_id to cookie's one (uni)
       university_id: 8,
     };
     sendRequest(JSON.stringify(formData), action, "POST");

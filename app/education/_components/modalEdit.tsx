@@ -55,6 +55,7 @@ const ModalEdit = ({
       career_guidance_id: skillId,
       level,
       description: descriptionCur,
+      // TODO: change user_id to cookie's one (work)
       employer_id: 6,
     };
     sendRequest(JSON.stringify(formData), action, method);

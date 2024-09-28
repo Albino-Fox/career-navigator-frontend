@@ -27,6 +27,7 @@ const CardStudentWork = ({
   const setFocus = (id: number) => {
     const formData = {
       focus_vacancy_id: id,
+      // TODO: change user_id to cookie's one
       user_id: 1,
     };
     sendRequest(

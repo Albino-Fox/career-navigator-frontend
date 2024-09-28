@@ -19,6 +19,7 @@ const EducationUniversityPage = async () => {
   const careerGuidances = await response.json();
 
   response = await fetch(
+    // TODO: change user_id to cookie's one (uni)
     "http://127.0.0.1:3001/api/career_guidance_branches/getFrom/8",
   );
   const careerGuidanceBranches = await response.json();

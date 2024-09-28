@@ -14,6 +14,7 @@ const ContactPage = () => {
     <div className="flex justify-center w-[100%]">
       <Form
         title="Составление обращения"
+        method="POST"
         btnTitle="Отправить"
         className="w-[856px] pb-[100px] pt-[50px]"
       >

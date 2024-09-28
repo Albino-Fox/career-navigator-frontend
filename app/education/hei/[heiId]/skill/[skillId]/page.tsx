@@ -11,6 +11,7 @@ const UniversityPage = async ({
     `http://127.0.0.1:3001/api/career_guidance_branches/getTasksOfCareerGuidance/${params.skillId}`,
     {
       method: "POST",
+      // TODO: change user_id to cookie's one
       body: JSON.stringify({ university_id: params.heiId, user_id: 1 }),
       headers: { "Content-Type": "application/json" },
     },

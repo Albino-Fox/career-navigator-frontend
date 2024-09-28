@@ -32,6 +32,8 @@ const CardUniversityMore = ({
     const formData = {
       university_id,
       career_guidance_id,
+      // TODO: change user_id to cookie's one
+
       user_id: 1,
     };
     sendRequest(

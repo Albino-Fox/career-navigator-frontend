@@ -6,6 +6,7 @@ import React from "react";
 export const fetchCache = "force-no-store";
 
 const ProfilePage = async () => {
+  // TODO: change user_id to cookie's one
   const data = await fetch("http://127.0.0.1:3001/api/users/get/1");
   const user = await data.json();
 

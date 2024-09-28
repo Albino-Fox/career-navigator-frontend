@@ -31,6 +31,7 @@ const FormAddVacancy = ({ action, careerGuidances }: FormAddVacancyProps) => {
       career_guidance_id: skillId,
       level,
       description,
+      // TODO: change employer_id to cookie's one
       employer_id: 6,
     };
     sendRequest(JSON.stringify(formData), action, "POST");

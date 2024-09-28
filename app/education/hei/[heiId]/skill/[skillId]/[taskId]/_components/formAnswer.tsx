@@ -15,6 +15,7 @@ const FormAnswer = ({ action, id }: FormAnswerProps) => {
 
   const handleSubmit = () => {
     const formData = {
+      // TODO: change user_id to cookie's one
       user_id: 1,
       task_id: id,
       answer,
