@@ -31,7 +31,6 @@ const EducationPage = async () => {
     `http://127.0.0.1:3001/api/vacancies/get/${user.focus_vacancy_id}`,
   );
   const focusVacancy = await response.json();
-  console.log(focusVacancy);
 
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
