@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { convertDifficultyToStars } from "@/lib/utils";
 import { Plus } from "lucide-react";
 
+export const fetchCache = "force-no-store";
+
 import {
   Dialog,
   DialogContent,

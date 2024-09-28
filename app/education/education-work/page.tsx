@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import ListCardWork from "../_components/listCardWork";
 import { Plus } from "lucide-react";
 
+export const fetchCache = "force-no-store";
+
 import {
   Dialog,
   DialogContent,

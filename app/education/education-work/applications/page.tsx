@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import CardApplication from "../../_components/cardApplication";
 import ListCardWork from "../../_components/listCardWork";
 
+export const fetchCache = "force-no-store";
+
 const ApplicationsPage = () => {
   return (
     <div className="flex justify-center w-[100%] pb-[75px] bg-c5 ">

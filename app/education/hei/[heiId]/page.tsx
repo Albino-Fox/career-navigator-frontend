@@ -1,6 +1,8 @@
 import CardUniversityMore from "../../_components/cardUniversityMore";
 import { SkillName } from "@/types/card";
 
+export const fetchCache = "force-no-store";
+
 const UniversityPage = async ({ params }: { params: { heiId: number } }) => {
   let response = await fetch(
     `http://127.0.0.1:3001/api/users/getUniversity/${params.heiId}`,

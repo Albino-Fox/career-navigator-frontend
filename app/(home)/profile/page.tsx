@@ -3,6 +3,8 @@ import Form from "../../../components/form";
 import InputField from "../../../components/input";
 import React from "react";
 
+export const fetchCache = "force-no-store";
+
 const ProfilePage = async () => {
   const data = await fetch("http://127.0.0.1:3001/api/users/get/1");
   const user = await data.json();

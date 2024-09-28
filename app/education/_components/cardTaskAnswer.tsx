@@ -37,6 +37,7 @@ const CardTaskAnswer = ({
       "http://127.0.0.1:3001/api/answers/delete",
       "DELETE",
     );
+    window.location.reload();
   };
   const handleDecline = () => {
     sendRequest(
@@ -44,6 +45,7 @@ const CardTaskAnswer = ({
       "http://127.0.0.1:3001/api/answers/delete",
       "DELETE",
     );
+    window.location.reload();
   };
   return (
     <div className="bg-c1 rounded-[10px] p-[40px] min-w-[1278px]">

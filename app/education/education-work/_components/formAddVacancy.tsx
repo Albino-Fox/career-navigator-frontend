@@ -34,6 +34,7 @@ const FormAddVacancy = ({ action, careerGuidances }: FormAddVacancyProps) => {
       employer_id: 6,
     };
     sendRequest(JSON.stringify(formData), action, "POST");
+    window.location.reload();
   };
 
   return (

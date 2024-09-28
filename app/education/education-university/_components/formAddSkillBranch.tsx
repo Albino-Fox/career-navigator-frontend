@@ -31,6 +31,7 @@ const FormAddSkillBranch = ({
       university_id: 8,
     };
     sendRequest(JSON.stringify(formData), action, "POST");
+    window.location.reload();
   };
 
   return (

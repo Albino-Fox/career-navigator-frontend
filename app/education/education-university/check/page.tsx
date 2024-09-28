@@ -1,6 +1,8 @@
 import { AnswersDetailed, SkillName } from "@/types/card";
 import CardTaskAnswer from "../../_components/cardTaskAnswer";
 
+export const fetchCache = "force-no-store";
+
 const CheckPage = async () => {
   const response = await fetch("http://127.0.0.1:3001/api/answers/get/8");
   const careerGuidances = await response.json();

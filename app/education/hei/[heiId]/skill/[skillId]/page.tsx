@@ -1,5 +1,7 @@
 import CardUniversityMoreList from "@/app/education/_components/cardUniversityMoreList";
 
+export const fetchCache = "force-no-store";
+
 const UniversityPage = async ({
   params,
 }: {

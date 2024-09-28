@@ -12,6 +12,8 @@ import CardSkillSimple from "../_components/cardSkillSimple";
 import FormAddSkillBranch from "./_components/formAddSkillBranch";
 import { SkillName } from "@/types/card";
 
+export const fetchCache = "force-no-store";
+
 const EducationUniversityPage = async () => {
   let response = await fetch("http://127.0.0.1:3001/api/career_guidances/get");
   const careerGuidances = await response.json();

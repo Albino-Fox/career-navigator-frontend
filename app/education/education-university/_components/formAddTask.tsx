@@ -24,6 +24,7 @@ const FormAddTask = ({ action, skillBranchId }: FormAddTaskProps) => {
       university_id: 8,
     };
     sendRequest(JSON.stringify(formData), action, "POST");
+    window.location.reload();
   };
 
   return (

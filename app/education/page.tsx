@@ -13,6 +13,8 @@ import CardWork from "./_components/cardWork";
 import ListCardWork from "./_components/listCardWork";
 import { SkillName } from "@/types/card";
 
+export const fetchCache = "force-no-store";
+
 const EducationPage = async () => {
   let response = await fetch("http://127.0.0.1:3001/api/vacancies/get");
   const vacancies = await response.json();

@@ -30,7 +30,7 @@ const CardSkill = ({
           <Link
             href={`/education/hei/${university_id}/skill/${career_guidance_id}`}
           >
-            <Button className="">Продолжить изучение</Button>
+            <Button className="">Посмотреть задания</Button>
           </Link>
         )}
       </div>
