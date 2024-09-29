@@ -125,7 +125,9 @@ const CardWork = ({
                 ></CardStudentWork>
               </>
             ) : (
-              <div className="normal-text text-c4 ">Заявка отправлена</div>
+              <div className="normal-text text-c4 border-t-[2px] border-black w-[100%] text-center pt-5">
+                Заявка отправлена
+              </div>
             )}
           </div>
         </div>
