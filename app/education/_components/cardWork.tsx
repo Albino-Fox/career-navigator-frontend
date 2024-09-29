@@ -100,7 +100,7 @@ const CardWork = ({
           <div className="py-5 flex flex-wrap justify-between">
             <div className="small-text leading-snug">
               {convertDifficultyToStars(skill!.difficulty)} {skill!.title}
-              {suitableSkills.length > 0
+              {suitableSkills.length > 0 || sentApplication
                 ? ""
                 : " - У вас недостаточный уровень"}
             </div>

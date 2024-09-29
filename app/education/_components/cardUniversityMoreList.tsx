@@ -2,7 +2,7 @@
 
 import { convertDifficultyToStars } from "@/lib/utils";
 import { Task } from "@/types/card";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import {
   Accordion,
@@ -25,12 +25,15 @@ const CardUniversityMoreList = ({
   linkType = false,
 }: CardUniversityMoreListProps) => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isObserving = !!searchParams.get("observe");
+
   return (
     <div>
       <div className="w-[100%] border-b-[2px] border-black pt-5 normal-text">
         {convertDifficultyToStars(difficulty)} Уровень
       </div>
-      {linkType === false ? (
+      {linkType === false || (linkType === true && isObserving) ? (
         <Accordion type="multiple">
           {tasks.map((task, idx) => (
             <AccordionItem value={`${idx}`} key={idx}>

@@ -1,10 +1,16 @@
 import { convertDifficultyToStars } from "@/lib/utils";
+import Link from "next/link";
 
 interface CardApplicationProps {
   name: string;
   phone: string;
   email: string;
-  skills: { difficulty: number; university: string }[];
+  skills: {
+    difficulty: number;
+    university: string;
+    university_id: number;
+    career_guidance_id: number;
+  }[];
   children?: React.ReactNode;
 }
 const CardApplication = ({
@@ -26,7 +32,11 @@ const CardApplication = ({
         <div className="normal-text flex flex-col leading-snug">
           {skills.map((skill, idx) => (
             <div key={idx}>
-              {convertDifficultyToStars(skill.difficulty)} {skill.university}
+              <Link
+                href={`http://127.0.0.1:3000/education/hei/${skill.university_id}/skill/${skill.career_guidance_id}?observe=1`}
+              >
+                {convertDifficultyToStars(skill.difficulty)} {skill.university}
+              </Link>
             </div>
           ))}
         </div>
