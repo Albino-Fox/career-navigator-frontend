@@ -19,6 +19,7 @@ interface CardWorkProps {
   noFocus?: boolean;
   focus_vacancy_id?: number;
   vacancies?: [];
+  sentApplication?: boolean;
   skill?: Skill;
 }
 const CardWork = ({
@@ -27,9 +28,11 @@ const CardWork = ({
   noFocus = false,
   vacancies,
   focus_vacancy_id,
+  sentApplication = false,
   skill,
 }: CardWorkProps) => {
   const [suitableSkills, setSuitableSkills] = useState([]);
+
   useEffect(() => {
     if (!noFocus) {
       fetch(`http://127.0.0.1:3001/api/users/getSuitableSkills`, {
@@ -46,11 +49,12 @@ const CardWork = ({
           setSuitableSkills(data);
         });
     }
-  });
+  }, [noFocus, focus_vacancy_id]);
 
   const handleRemoveFocus = () => {
     const formData = {
       focus_vacancy_id: null,
+      // TODO: change user_id to cookie's
       user_id: 1,
     };
     sendRequest(
@@ -59,6 +63,22 @@ const CardWork = ({
       "PATCH",
     );
     window.location.reload();
+  };
+
+  const handleSendApplication = () => {
+    if (!noFocus) {
+      const formData = {
+        vacancy_id: focus_vacancy_id,
+        // TODO: change user_id to cookie's
+        user_id: 1,
+      };
+      sendRequest(
+        JSON.stringify(formData),
+        "http://127.0.0.1:3001/api/applications/create",
+        "POST",
+      );
+      window.location.reload();
+    }
   };
 
   return (
@@ -87,17 +107,26 @@ const CardWork = ({
           </div>
 
           <div className="flex flex-row justify-between items-center">
-            <Button disabled={suitableSkills.length === 0}>
-              Отправить заявку
-            </Button>
-            <Button variant="destructive" onClick={handleRemoveFocus}>
-              Снять фокус
-            </Button>
-            <CardStudentWork
-              vacancies={vacancies!}
-              title={"Посмотреть другие"}
-              className="small-btn-text"
-            ></CardStudentWork>
+            {sentApplication === false ? (
+              <>
+                <Button
+                  disabled={suitableSkills.length === 0}
+                  onClick={handleSendApplication}
+                >
+                  Отправить заявку
+                </Button>
+                <Button variant="destructive" onClick={handleRemoveFocus}>
+                  Снять фокус
+                </Button>
+                <CardStudentWork
+                  vacancies={vacancies!}
+                  title={"Посмотреть другие"}
+                  className="small-btn-text"
+                ></CardStudentWork>
+              </>
+            ) : (
+              <div className="normal-text text-c4 ">Заявка отправлена</div>
+            )}
           </div>
         </div>
       ) : (

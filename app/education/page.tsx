@@ -34,6 +34,20 @@ const EducationPage = async () => {
   );
   const focusVacancy = await response.json();
 
+  response = await fetch(
+    `http://127.0.0.1:3001/api/applications/checkApplication`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        // TODO: change user_id to cookie's one
+        user_id: 1,
+        vacancy_id: user.focus_vacancy_id,
+      }),
+      headers: { "Content-Type": "application/json" },
+    },
+  );
+  const hasApplication = await response.json();
+
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
       <div className="flex flex-col gap-[10px] items-center w-[836px]">
@@ -45,6 +59,7 @@ const EducationPage = async () => {
               title={focusVacancy.name}
               description={focusVacancy.description}
               focus_vacancy_id={user.focus_vacancy_id}
+              sentApplication={hasApplication}
               vacancies={vacancies}
               skill={{
                 difficulty: focusVacancy.level,
