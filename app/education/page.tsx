@@ -44,6 +44,7 @@ const EducationPage = async () => {
             <CardWork
               title={focusVacancy.name}
               description={focusVacancy.description}
+              focus_vacancy_id={user.focus_vacancy_id}
               vacancies={vacancies}
               skill={{
                 difficulty: focusVacancy.level,
