@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Form from "../../../components/form";
 import InputField from "../../../components/input";
+import Link from "next/link";
 
 const LoginPage = () => {
   return (
@@ -16,9 +17,11 @@ const LoginPage = () => {
       </Form>
       <div className="text-center small-text pb-[100px]">
         Нет аккаунта?{" "}
-        <Button variant="link" size="text" className="small-text">
-          Зарегистрироваться
-        </Button>
+        <Link href="/registration">
+          <Button variant="link" size="text" className="small-text">
+            Зарегистрироваться
+          </Button>
+        </Link>
       </div>
     </div>
   );

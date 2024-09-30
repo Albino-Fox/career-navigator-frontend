@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Form from "../../../components/form";
 import InputField from "../../../components/input";
+import Link from "next/link";
 
 const RegistrationPage = () => {
   return (
@@ -36,9 +37,11 @@ const RegistrationPage = () => {
       </Form>
       <div className="text-center small-text pb-[100px]">
         Есть аккаунт?{" "}
-        <Button variant="link" size="text" className="small-text">
-          Войти
-        </Button>
+        <Link href="/login">
+          <Button variant="link" size="text" className="small-text">
+            Войти
+          </Button>
+        </Link>
       </div>
     </div>
   );
