@@ -4,6 +4,7 @@ import InputField from "../../../components/input";
 import React from "react";
 import { SessionIds } from "@/lib/config";
 import { localizeRole } from "@/lib/utils";
+import TextareaField from "@/components/textarea";
 
 export const fetchCache = "force-no-store";
 
@@ -60,7 +61,7 @@ const ProfilePage = async () => {
             ""
           )}
           {user.Role.name === "university" ? (
-            <InputField
+            <TextareaField
               title="Описание"
               name="description"
               value={user.description}
