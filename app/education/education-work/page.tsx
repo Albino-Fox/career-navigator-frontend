@@ -61,11 +61,13 @@ const EducationWorkPage = async () => {
                 id: number;
                 level: number;
                 skillTitle: SkillName;
+                is_taken: boolean;
               }) => (
                 <ListCardWork
                   key={vacancy.id}
                   title={vacancy.title}
                   hasDeleteButton
+                  isTaken={vacancy.is_taken}
                   id={vacancy.id}
                   description={vacancy.description}
                   skill={{

@@ -19,6 +19,7 @@ interface CardWorkProps {
   noFocus?: boolean;
   focus_vacancy_id?: number;
   vacancies?: [];
+  isCompleting?: boolean;
   sentApplication?: boolean;
   skill?: Skill;
 }
@@ -27,6 +28,7 @@ const CardWork = ({
   description,
   noFocus = false,
   vacancies,
+  isCompleting = false,
   focus_vacancy_id,
   sentApplication = false,
   skill,
@@ -107,7 +109,7 @@ const CardWork = ({
           </div>
 
           <div className="flex flex-row justify-between items-center">
-            {sentApplication === false ? (
+            {sentApplication === false && isCompleting === false ? (
               <>
                 <Button
                   disabled={suitableSkills.length === 0}
@@ -126,7 +128,11 @@ const CardWork = ({
               </>
             ) : (
               <div className="normal-text text-c4 border-t-[2px] border-black w-[100%] text-center pt-5">
-                Заявка отправлена
+                {isCompleting ? (
+                  <p className="text-c3">Задача выполняется вами</p>
+                ) : (
+                  <p className="text-c4">Заявка отправлена</p>
+                )}
               </div>
             )}
           </div>

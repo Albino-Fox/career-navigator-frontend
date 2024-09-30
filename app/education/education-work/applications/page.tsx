@@ -31,6 +31,8 @@ const ApplicationsPage = async () => {
                   name={`${application.User.name} ${application.User.surname} ${application.User.patronymic}`
                     .replace(/\s+/g, " ")
                     .trim()}
+                  application_id={application.id}
+                  vacancy_id={vacancy.id}
                   email={application.User.email}
                   phone={application.User.phone_number}
                   skills={application.Skills.map((entry) => {
@@ -42,12 +44,7 @@ const ApplicationsPage = async () => {
                         entry.CareerGuidanceBranch.career_guidance_id,
                     };
                   })}
-                >
-                  <div className="flex flex-row justify-around w-[100%]">
-                    <Button>Принять</Button>
-                    <Button>Отклонить</Button>
-                  </div>
-                </CardApplication>
+                ></CardApplication>
               </div>
             )),
           )}

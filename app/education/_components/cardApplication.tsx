@@ -1,4 +1,7 @@
-import { convertDifficultyToStars } from "@/lib/utils";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { convertDifficultyToStars, sendRequest } from "@/lib/utils";
 import Link from "next/link";
 
 interface CardApplicationProps {
@@ -11,15 +14,46 @@ interface CardApplicationProps {
     university_id: number;
     career_guidance_id: number;
   }[];
-  children?: React.ReactNode;
+  vacancy_id: number;
+  application_id: number;
 }
 const CardApplication = ({
   name,
   phone,
   email,
   skills,
-  children,
+  vacancy_id,
+  application_id,
 }: CardApplicationProps) => {
+  const handleAccept = () => {
+    sendRequest(
+      // TODO: change user_id to cookie's one
+      JSON.stringify({ is_taken: true, user_id: 1, id: vacancy_id }),
+      "http://127.0.0.1:3001/api/vacancies/setStudent",
+      "PATCH",
+    );
+    sendRequest(
+      JSON.stringify({ id: application_id }),
+      "http://127.0.0.1:3001/api/applications/delete",
+      "DELETE",
+    );
+    window.location.reload();
+  };
+  const handleDecline = () => {
+    sendRequest(
+      // TODO: change user_id to cookie's one
+      JSON.stringify({ is_taken: false, user_id: 1, id: vacancy_id }),
+      "http://127.0.0.1:3001/api/vacancies/setStudent",
+      "PATCH",
+    );
+    sendRequest(
+      JSON.stringify({ id: application_id }),
+      "http://127.0.0.1:3001/api/applications/delete",
+      "DELETE",
+    );
+    window.location.reload();
+  };
+
   return (
     <div className="bg-c1 p-[25px] mb-[15px] rounded-[10px] text-black leading-none -mt-[30px]">
       <div className="big-text pb-[50px]">
@@ -35,14 +69,20 @@ const CardApplication = ({
               <Link
                 href={`http://127.0.0.1:3000/education/hei/${skill.university_id}/skill/${skill.career_guidance_id}?observe=1`}
               >
-                {convertDifficultyToStars(skill.difficulty)} {skill.university}
+                <div className="underline hover:text-c4">
+                  {convertDifficultyToStars(skill.difficulty)}{" "}
+                  {skill.university}
+                </div>
               </Link>
             </div>
           ))}
         </div>
       </div>
       <div className="flex flex-row justify-between items-center pt-5">
-        {children}
+        <div className="flex flex-row justify-around w-[100%]">
+          <Button onClick={handleAccept}>Принять</Button>
+          <Button onClick={handleDecline}>Отклонить</Button>
+        </div>
       </div>
     </div>
   );

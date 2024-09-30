@@ -15,6 +15,7 @@ interface ListCardWorkProps {
   title: string;
   description?: string;
   skill: Skill;
+  isTaken?: boolean;
   hasDeleteButton?: boolean;
   id?: number;
   children?: React.ReactNode;
@@ -23,6 +24,7 @@ const ListCardWork = ({
   title,
   description,
   skill,
+  isTaken,
   hasDeleteButton = false,
   id,
   children,
@@ -30,10 +32,11 @@ const ListCardWork = ({
   return (
     <div className="bg-c1 p-[25px] mb-[15px] rounded-[10px] text-black leading-none">
       <div className="big-text -mt-2">{title}</div>
-      <div className="pb-5 pt-2 flex flex-wrap justify-between">
+      <div className="pb-5 pt-2 flex items-center flex-wrap justify-between">
         <div className="normal-text leading-snug">
           {convertDifficultyToStars(skill.difficulty)} {skill.title}
         </div>
+        {isTaken ? <div>[Выполняется]</div> : ""}
       </div>
 
       <Accordion type="multiple">

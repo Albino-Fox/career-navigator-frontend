@@ -60,6 +60,7 @@ const EducationPage = async () => {
               description={focusVacancy.description}
               focus_vacancy_id={user.focus_vacancy_id}
               sentApplication={hasApplication}
+              isCompleting={user.is_completing}
               vacancies={vacancies}
               skill={{
                 difficulty: focusVacancy.level,
