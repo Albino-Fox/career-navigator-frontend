@@ -46,8 +46,10 @@ const Navbar = () => {
           <Button
             size="fix"
             variant="icon"
-            className="w-[90px] h-[90px]"
-          ></Button>
+            className="w-[90px] h-[90px] big-text text-c5 font-extrabold"
+          >
+            П
+          </Button>
         </Link>
       </div>
     </div>

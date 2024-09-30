@@ -34,3 +34,20 @@ export const sendRequest = (values: string, link: string, method: Method) => {
       console.log(data);
     });
 };
+
+export const localizeRole = (role: string) => {
+  switch (role) {
+    case "student":
+      return "Студент";
+      break;
+    case "university":
+      return "Университет";
+      break;
+    case "employer":
+      return "Работодатель";
+      break;
+
+    default:
+      break;
+  }
+};
