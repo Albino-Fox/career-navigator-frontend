@@ -13,6 +13,7 @@ import {
 import { DialogClose } from "@/components/ui/dialog";
 import { useState } from "react";
 import { sendRequest } from "@/lib/utils";
+import { SessionIds } from "@/lib/config";
 
 interface FormAddVacancyProps {
   action: string;
@@ -32,7 +33,7 @@ const FormAddVacancy = ({ action, careerGuidances }: FormAddVacancyProps) => {
       level,
       description,
       // TODO: change employer_id to cookie's one
-      employer_id: 6,
+      employer_id: SessionIds.employer,
     };
     sendRequest(JSON.stringify(formData), action, "POST");
     window.location.reload();

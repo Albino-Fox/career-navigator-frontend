@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { SessionIds } from "@/lib/config";
 import { convertDifficultyToStars, sendRequest } from "@/lib/utils";
 import Link from "next/link";
 
@@ -28,7 +29,11 @@ const CardApplication = ({
   const handleAccept = () => {
     sendRequest(
       // TODO: change user_id to cookie's one
-      JSON.stringify({ is_taken: true, user_id: 1, id: vacancy_id }),
+      JSON.stringify({
+        is_taken: true,
+        user_id: SessionIds.student,
+        id: vacancy_id,
+      }),
       "http://127.0.0.1:3001/api/vacancies/setStudent",
       "PATCH",
     );
@@ -42,7 +47,11 @@ const CardApplication = ({
   const handleDecline = () => {
     sendRequest(
       // TODO: change user_id to cookie's one
-      JSON.stringify({ is_taken: false, user_id: 1, id: vacancy_id }),
+      JSON.stringify({
+        is_taken: false,
+        user_id: SessionIds.student,
+        id: vacancy_id,
+      }),
       "http://127.0.0.1:3001/api/vacancies/setStudent",
       "PATCH",
     );

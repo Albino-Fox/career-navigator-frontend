@@ -11,6 +11,7 @@ import CardUniversity from "./_components/cardUniversity";
 import CardSkill from "./_components/cardSkill";
 import CardWork from "./_components/cardWork";
 import { SkillName } from "@/types/card";
+import { SessionIds } from "@/lib/config";
 
 export const fetchCache = "force-no-store";
 
@@ -22,11 +23,15 @@ const EducationPage = async () => {
   const universities = await response.json();
 
   // TODO: change user_id to cookie's one
-  response = await fetch("http://127.0.0.1:3001/api/student_skills/getMax/1");
+  response = await fetch(
+    `http://127.0.0.1:3001/api/student_skills/getMax/${SessionIds.student}`,
+  );
   const skillBranches = await response.json();
 
   // TODO: change user_id to cookie's one
-  response = await fetch("http://127.0.0.1:3001/api/users/get/1");
+  response = await fetch(
+    `http://127.0.0.1:3001/api/users/get/${SessionIds.student}`,
+  );
   const user = await response.json();
 
   response = await fetch(
@@ -40,7 +45,7 @@ const EducationPage = async () => {
       method: "POST",
       body: JSON.stringify({
         // TODO: change user_id to cookie's one
-        user_id: 1,
+        user_id: SessionIds.student,
         vacancy_id: user.focus_vacancy_id,
       }),
       headers: { "Content-Type": "application/json" },

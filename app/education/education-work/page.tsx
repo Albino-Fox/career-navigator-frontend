@@ -15,13 +15,16 @@ import {
 import ModalEdit from "../_components/modalEdit";
 import FormAddVacancy from "./_components/formAddVacancy";
 import { SkillName } from "@/types/card";
+import { SessionIds } from "@/lib/config";
 
 const EducationWorkPage = async () => {
   let response = await fetch("http://127.0.0.1:3001/api/career_guidances/get");
   const careerGuidances = await response.json();
 
   // TODO: change user_id to cookie's one (work)
-  response = await fetch("http://127.0.0.1:3001/api/vacancies/getFrom/6");
+  response = await fetch(
+    `http://127.0.0.1:3001/api/vacancies/getFrom/${SessionIds.employer}`,
+  );
   const vacancies = await response.json();
 
   return (

@@ -12,6 +12,7 @@ import {
 import CardStudentWork from "./cardStudentWork";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { SessionIds } from "@/lib/config";
 
 interface CardWorkProps {
   title?: string;
@@ -41,7 +42,7 @@ const CardWork = ({
         method: "POST",
         body: JSON.stringify({
           // TODO: change user_id to cookie's
-          user_id: 1,
+          user_id: SessionIds.student,
           vacancy_id: focus_vacancy_id,
         }),
         headers: { "Content-Type": "application/json" },
@@ -57,7 +58,7 @@ const CardWork = ({
     const formData = {
       focus_vacancy_id: null,
       // TODO: change user_id to cookie's
-      user_id: 1,
+      user_id: SessionIds.student,
     };
     sendRequest(
       JSON.stringify(formData),
@@ -72,7 +73,7 @@ const CardWork = ({
       const formData = {
         vacancy_id: focus_vacancy_id,
         // TODO: change user_id to cookie's
-        user_id: 1,
+        user_id: SessionIds.student,
       };
       sendRequest(
         JSON.stringify(formData),

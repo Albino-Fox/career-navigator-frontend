@@ -12,6 +12,7 @@ import {
 import ListCardWork from "./listCardWork";
 import { SkillName } from "@/types/card";
 import { sendRequest } from "@/lib/utils";
+import { SessionIds } from "@/lib/config";
 
 interface CardStudentWorkProps {
   vacancies: [];
@@ -28,7 +29,7 @@ const CardStudentWork = ({
     const formData = {
       focus_vacancy_id: id,
       // TODO: change user_id to cookie's one
-      user_id: 1,
+      user_id: SessionIds.student,
     };
     sendRequest(
       JSON.stringify(formData),

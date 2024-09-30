@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { sendRequest } from "@/lib/utils";
 import { Method } from "@/types/header";
+import { SessionIds } from "@/lib/config";
 
 interface ModalEditProps {
   title: string;
@@ -56,7 +57,7 @@ const ModalEdit = ({
       level,
       description: descriptionCur,
       // TODO: change user_id to cookie's one (work)
-      employer_id: 6,
+      employer_id: SessionIds.employer,
     };
     sendRequest(JSON.stringify(formData), action, method);
     window.location.reload();

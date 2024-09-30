@@ -1,4 +1,5 @@
 import CardUniversityMoreList from "@/app/education/_components/cardUniversityMoreList";
+import { SessionIds } from "@/lib/config";
 
 export const fetchCache = "force-no-store";
 
@@ -12,7 +13,10 @@ const UniversityPage = async ({
     {
       method: "POST",
       // TODO: change user_id to cookie's one
-      body: JSON.stringify({ university_id: params.heiId, user_id: 1 }),
+      body: JSON.stringify({
+        university_id: params.heiId,
+        user_id: SessionIds.student,
+      }),
       headers: { "Content-Type": "application/json" },
     },
   );

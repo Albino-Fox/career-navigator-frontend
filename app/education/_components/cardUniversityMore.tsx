@@ -12,6 +12,7 @@ import CardUniversityMoreList from "./cardUniversityMoreList";
 import { Button } from "@/components/ui/button";
 import { sendRequest } from "@/lib/utils";
 import Link from "next/link";
+import { SessionIds } from "@/lib/config";
 
 interface CardUniversityMoreProps {
   skill: Skill;
@@ -34,7 +35,7 @@ const CardUniversityMore = ({
       career_guidance_id,
       // TODO: change user_id to cookie's one
 
-      user_id: 1,
+      user_id: SessionIds.student,
     };
     sendRequest(
       JSON.stringify(formData),

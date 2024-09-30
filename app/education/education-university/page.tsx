@@ -11,6 +11,7 @@ import { Plus } from "lucide-react";
 import CardSkillSimple from "../_components/cardSkillSimple";
 import FormAddSkillBranch from "./_components/formAddSkillBranch";
 import { SkillName } from "@/types/card";
+import { SessionIds } from "@/lib/config";
 
 export const fetchCache = "force-no-store";
 
@@ -20,7 +21,7 @@ const EducationUniversityPage = async () => {
 
   response = await fetch(
     // TODO: change user_id to cookie's one (uni)
-    "http://127.0.0.1:3001/api/career_guidance_branches/getFrom/8",
+    `http://127.0.0.1:3001/api/career_guidance_branches/getFrom/${SessionIds.university}`,
   );
   const careerGuidanceBranches = await response.json();
 

@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import CardApplication from "../../_components/cardApplication";
 import ListCardWork from "../../_components/listCardWork";
+import { SessionIds } from "@/lib/config";
 
 export const fetchCache = "force-no-store";
 
 const ApplicationsPage = async () => {
   // TODO: change user_id to cookie's (work)
   const response = await fetch(
-    "http://127.0.0.1:3001/api/applications/getOfUser/6",
+    `http://127.0.0.1:3001/api/applications/getOfUser/${SessionIds.employer}`,
   );
   const vacancies = await response.json();
 

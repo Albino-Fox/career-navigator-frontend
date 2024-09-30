@@ -11,6 +11,7 @@ import {
 import { DialogClose } from "@/components/ui/dialog";
 import { useState } from "react";
 import { sendRequest } from "@/lib/utils";
+import { SessionIds } from "@/lib/config";
 
 interface FormAddSkillBranchProps {
   action: string;
@@ -29,7 +30,7 @@ const FormAddSkillBranch = ({
       career_guidance_id: skillId,
       level,
       // TODO: change user_id to cookie's one (uni)
-      university_id: 8,
+      university_id: SessionIds.university,
     };
     sendRequest(JSON.stringify(formData), action, "POST");
     window.location.reload();

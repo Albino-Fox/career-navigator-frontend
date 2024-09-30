@@ -6,6 +6,7 @@ import { useState } from "react";
 import { sendRequest } from "@/lib/utils";
 import InputDarkField from "@/components/inputDark";
 import TextareaDarkField from "@/components/textareaDark";
+import { SessionIds } from "@/lib/config";
 
 interface FormTaskEditProps {
   action: string;
@@ -29,7 +30,7 @@ const FormTaskEdit = ({
       name: titleCur,
       description: descriptionCur,
       // TODO: change user_id to cookie's one (uni)
-      university_id: 8,
+      university_id: SessionIds.university,
     };
     sendRequest(JSON.stringify(formData), action, "PATCH");
     window.location.reload();

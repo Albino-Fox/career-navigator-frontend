@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button";
 import Form from "../../../components/form";
 import InputField from "../../../components/input";
 import React from "react";
+import { SessionIds } from "@/lib/config";
 
 export const fetchCache = "force-no-store";
 
 const ProfilePage = async () => {
   // TODO: change user_id to cookie's one
-  const data = await fetch("http://127.0.0.1:3001/api/users/get/1");
+  const data = await fetch(
+    `http://127.0.0.1:3001/api/users/get/${SessionIds.student}`,
+  );
   const user = await data.json();
 
   return (
