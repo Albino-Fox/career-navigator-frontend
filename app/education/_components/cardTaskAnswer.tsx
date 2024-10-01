@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { SessionIds } from "@/lib/config";
 
 interface CardTaskAnswerProps {
   task: Task;
@@ -28,7 +29,7 @@ const CardTaskAnswer = ({
 }: CardTaskAnswerProps) => {
   const handleSubmit = () => {
     sendRequest(
-      JSON.stringify({ task_id, is_done: true }),
+      JSON.stringify({ task_id, is_done: true, user_id: SessionIds.student }),
       "http://127.0.0.1:3001/api/task_statuses/update",
       "PATCH",
     );
