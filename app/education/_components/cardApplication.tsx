@@ -87,6 +87,10 @@ const CardApplication = ({
           ))}
         </div>
       </div>
+      <div className="text-c4 text-[2.5rem] pb-4">
+        <span className="text-c5">Внимание!</span> Данные студента вы можете
+        увидеть лишь раз
+      </div>
       <div className="flex flex-row justify-between items-center pt-5">
         <div className="flex flex-row justify-around w-[100%]">
           <Button onClick={handleAccept}>Принять</Button>

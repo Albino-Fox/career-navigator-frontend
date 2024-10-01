@@ -1,10 +1,13 @@
 import { AnswersDetailed, SkillName } from "@/types/card";
 import CardTaskAnswer from "../../_components/cardTaskAnswer";
+import { SessionIds } from "@/lib/config";
 
 export const fetchCache = "force-no-store";
 
 const CheckPage = async () => {
-  const response = await fetch("http://127.0.0.1:3001/api/answers/get/8");
+  const response = await fetch(
+    `http://127.0.0.1:3001/api/answers/get/${SessionIds.university}`,
+  );
   const careerGuidances = await response.json();
   const answers: AnswersDetailed[] = [];
   careerGuidances.forEach(

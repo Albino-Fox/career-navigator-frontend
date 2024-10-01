@@ -37,12 +37,12 @@ const CardUniversityMoreList = ({
         <Accordion type="multiple">
           {tasks.map((task, idx) => (
             <AccordionItem value={`${idx}`} key={idx}>
-              <AccordionTrigger className="flex flex-row justify-between hover:bg-c2/75 rounded-[25px] p-5 ">
+              <AccordionTrigger className="flex flex-row justify-between hover:bg-c2/75 rounded-[25px] px-5 ">
                 <div className="pt-2 small-text">
                   {idx + 1}. {task.name}
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="small-text">
+              <AccordionContent className="small-text leading-snug">
                 {task.description}
               </AccordionContent>
             </AccordionItem>

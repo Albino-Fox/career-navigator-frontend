@@ -105,7 +105,9 @@ const CardWork = ({
               {convertDifficultyToStars(skill!.difficulty)} {skill!.title}
               {suitableSkills.length > 0 || sentApplication
                 ? ""
-                : " - У вас недостаточный уровень"}
+                : isCompleting === false
+                  ? " - У вас недостаточный уровень"
+                  : ""}
             </div>
           </div>
 

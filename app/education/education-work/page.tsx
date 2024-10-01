@@ -30,7 +30,7 @@ const EducationWorkPage = async () => {
   return (
     <div className="flex justify-center w-[100%] h-fit bg-c5 pb-[75px]">
       <div className="flex flex-col gap-[10px] items-center w-[836px]">
-        <div className="big-text py-5">Обучение</div>
+        <div className="big-text py-5">Общая</div>
         <div className="flex flex-col w-[100%]">
           <div className="flex w-[100%] flex-row justify-between">
             <div>Мои рабочие задачи</div>
@@ -87,6 +87,7 @@ const EducationWorkPage = async () => {
                     skill={{
                       difficulty: vacancy.level,
                       title: vacancy.skillTitle,
+                      id: vacancy.skillId,
                     }}
                   >
                     <Button className="w-[304px]">Редактировать</Button>

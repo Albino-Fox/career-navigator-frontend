@@ -44,7 +44,7 @@ const ListCardWork = ({
           <AccordionTrigger className="small-text border-b-2 border-black mb-5">
             Описание
           </AccordionTrigger>
-          <AccordionContent className="leading-none small-text pt-5">
+          <AccordionContent className="leading-none small-text pb-5">
             {description}
           </AccordionContent>
         </AccordionItem>
@@ -65,7 +65,7 @@ const ListCardWork = ({
               window.location.reload();
             }}
           >
-            Удалить
+            {isTaken ? "Закрыть и удалить" : "Удалить"}
           </Button>
         ) : (
           ""

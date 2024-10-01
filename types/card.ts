@@ -7,6 +7,7 @@ export type SkillName =
 export type Skill = {
   difficulty: number;
   title: SkillName;
+  id?: number;
 };
 
 export type Task = {

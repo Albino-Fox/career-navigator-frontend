@@ -46,7 +46,9 @@ const ModalEdit = ({
   children,
 }: ModalEditProps) => {
   const [titleCur, setTitleCur] = useState(title);
-  const [skillId, setSkillId] = useState(careerGuidances[0].id.toString());
+  const [skillId, setSkillId] = useState(
+    skill?.id?.toString() || careerGuidances[0].id.toString(),
+  );
   const [level, setLevel] = useState("1");
   const [descriptionCur, setDescription] = useState(description);
 

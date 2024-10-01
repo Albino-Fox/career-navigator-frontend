@@ -2,13 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const Navbar = () => {
   const currentPath = usePathname();
+  const searchParams = useSearchParams();
+
   let type = 0;
   if (currentPath.startsWith("/education/education-university")) type = 2;
   if (currentPath.startsWith("/education/education-work")) type = 1;
+  if (!!searchParams.get("observe")) type = 1;
   return (
     <div className="flex h-[150px] flex-shrink-0 w-[100%] pd-default justify-between items-center">
       <div className="logo-text text-c1 pointer-events-none select-none">
