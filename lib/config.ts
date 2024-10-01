@@ -1,7 +1,7 @@
 export const SessionIds = {
   university: 8,
-  employer: 10,
-  student: 11,
+  employer: 6,
+  student: 1,
 };
 // s -> u -> e
 // 1 -> 8 -> 6

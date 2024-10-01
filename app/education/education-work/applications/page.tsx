@@ -34,6 +34,7 @@ const ApplicationsPage = async () => {
                     .trim()}
                   application_id={application.id}
                   vacancy_id={vacancy.id}
+                  user_id={application.user_id}
                   email={application.User.email}
                   phone={application.User.phone_number}
                   skills={application.Skills.map((entry) => {
